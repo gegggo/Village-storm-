@@ -1295,44 +1295,80 @@ function progFrac(){
 function genCamp(L,f){
   if(f===undefined) f=0.5;
   var fm=0.7+0.6*f;
-  var N=GC, occ=[], list=[], id=1, y, x;
+  var N=GC, occ=[], list=[], id=1, y, x, i;
   for(y=0;y<N;y++){occ.push(new Array(N).fill(false));}
-  function fits(px,py,w,h){ for(var j=0;j<h;j++) for(var i=0;i<w;i++) if(occ[py+j][px+i]) return false; return true; }
-  function add(type,lvl,px,py){
+  function fits(px,py,w,h,m){ for(var j=-m;j<h+m;j++) for(var i2=-m;i2<w+m;i2++){ var yy=py+j, xx=px+i2; if(yy<0||xx<0||yy>=N||xx>=N) continue; if(occ[yy][xx]) return false; } return true; }
+  function add(type,lvl,px,py,box){
     var d=DEFS[type];
-    for(var k=0;k<90;k++){
-      var tx=px!==undefined?px:ri(3,GC-3-d.w), ty=py!==undefined?py:ri(3,GC-3-d.h);
-      if(fits(tx,ty,d.w,d.h)){
-        for(var j=0;j<d.h;j++) for(var i=0;i<d.w;i++) occ[ty+j][tx+i]=true;
+    for(var k=0;k<120;k++){
+      var m=k<90?1:0, tx,ty;
+      if(px!==undefined){ tx=px; ty=py; }
+      else if(box){ tx=ri(box.x0,Math.max(box.x0,box.x1-d.w)); ty=ri(box.y0,Math.max(box.y0,box.y1-d.h)); }
+      else { tx=ri(3,GC-3-d.w); ty=ri(3,GC-3-d.h); }
+      if(tx<0||ty<0||tx+d.w>N||ty+d.h>N){ px=undefined; py=undefined; continue; }
+      if(fits(tx,ty,d.w,d.h,m)){
+        for(var j=0;j<d.h;j++) for(var i2=0;i2<d.w;i2++) occ[ty+j][tx+i2]=true;
         var hp=hpOf(type,lvl);
         var o={id:id++,type:type,x:tx,y:ty,lvl:lvl,hp:hp,maxhp:hp,alive:true,cd:rnd(0,1),aim:0,flash:0,def:isDef(type)?defStats(type,lvl):null};
-        list.push(o); return true;
+        list.push(o); return o;
       }
-      if(px!==undefined) px=undefined, py=undefined;
+      if(px!==undefined){ px=undefined; py=undefined; }
     }
-    return false;
+    return null;
+  }
+  var noWall=L<=3&&Math.random()<0.2;
+  function wall(wx,wy,lvl){
+    if(noWall||wx<1||wy<1||wx>=N-1||wy>=N-1||occ[wy][wx]) return;
+    occ[wy][wx]=true; var hp=200+130*lvl;
+    list.push({id:id++,type:'fence',x:wx,y:wy,lvl:lvl,hp:hp,maxhp:hp,alive:true,cd:0,aim:0,flash:0,def:null});
   }
   function lv(){ return clamp(L+ri(-1,0),1,MAXL); }
-  add('townhall',L,ri(11,13),ri(11,13));
-  var nC=clamp(Math.round(L*0.9+rnd(0,1.2)),2,8), nT=clamp(Math.round(L*1.1+rnd(0,1.5)),2,10), i;
-  for(i=0;i<nC;i++) add('cannon',lv());
-  if(L>=4){ var nB=Math.round((L-3)*0.5+rnd(0,1)); for(i=0;i<nB;i++) add('ballista',lv()); }
-  if(L>=6){ var nZ=Math.round((L-5)*0.5+rnd(0,0.8)); for(i=0;i<nZ;i++) add('mage',lv()); }
-  for(i=0;i<nT;i++) add('tower',lv());
+  /* Kern: Rathaus + Verteidigung hinter einem geschlossenen Mauerring */
+  var cs=L<=2?8:(L<=5?10:12), x0=Math.round(N/2-cs/2), y0=Math.round(N/2-cs/2), x1=x0+cs, y1=y0+cs;
+  var inner={x0:x0+1,y0:y0+1,x1:x1-1,y1:y1-1};
+  var td=DEFS.townhall; add('townhall',L,Math.round(N/2-td.w/2),Math.round(N/2-td.h/2));
+  var nC=clamp(Math.round(L*1.15+rnd(1,2)),3,11), nT=clamp(Math.round(L*1.4+rnd(1,2.5)),3,13), outer=[];
+  function def(type,n,share){ for(var q=0;q<n;q++){ var inC=q<Math.ceil(n*share), o=(inC?add(type,lv(),undefined,undefined,inner):null)||add(type,lv()); if(o&&!inC) outer.push(o); } }
+  def('cannon',nC,0.6);
+  if(L>=3) def('ballista',Math.round((L-2)*0.6+rnd(0,1)),1);
+  if(L>=5) def('mage',Math.round((L-4)*0.6+rnd(0,0.8)),1);
+  def('tower',nT,0.5);
+  var gap=0, wl=clamp(L-1,1,MAXL);
+  for(x=x0;x<x1;x++){ if(Math.random()>=gap) wall(x,y0,wl); if(Math.random()>=gap) wall(x,y1-1,wl); }
+  for(y=y0+1;y<y1-1;y++){ if(Math.random()>=gap) wall(x0,y,wl); if(Math.random()>=gap) wall(x1-1,y,wl); }
   var nm=ri(1,1+Math.ceil(L/2)), ns=ri(1,1+Math.ceil(L/2)), nst=ri(1,1+Math.ceil(L/3));
   for(i=0;i<nm;i++) add('mine',lv());
   for(i=0;i<ns;i++) add('sawmill',lv());
   for(i=0;i<nst;i++) add('storage',lv());
   add('quarry',lv()); if(L>=2) add('ironmine',lv()); if(L>=4&&Math.random()<0.6) add('smithy',lv());
   add('barracks',lv()); var nca=ri(1,2); for(i=0;i<nca;i++) add('camp',lv());
-  var block=[];
+  /* Außenposten: Mauern um einzelne Türme und Kanonen */
+  var pw=clamp(0.25+0.07*L,0,0.85);
+  outer.forEach(function(o){
+    if(Math.random()>pw) return; var d=DEFS[o.type], a, b2;
+    for(a=o.x-1;a<=o.x+d.w;a++) for(b2=o.y-1;b2<=o.y+d.h;b2++){
+      if(a>=o.x&&a<o.x+d.w&&b2>=o.y&&b2<o.y+d.h) continue;
+      wall(a,b2,wl);
+    }
+  });
+  var solid=list.filter(function(o){return o.type!=='fence'}), block=[];
   for(y=0;y<N;y++){ var row=[]; for(x=0;x<N;x++){
-    var m=1e9; for(i=0;i<list.length;i++){ var dd=rectDist(x+0.5,y+0.5,list[i]); if(dd<m) m=dd; }
-    row.push(m<1.6);
+    var m=1e9; for(i=0;i<solid.length;i++){ var dd=rectDist(x+0.5,y+0.5,solid[i]); if(dd<m) m=dd; }
+    row.push(m<1.6||occ[y][x]);
   } block.push(row); }
   var g=Math.round((350+380*Math.pow(L,1.75))*0.775*rnd(0.85,1.15));
-  var lm=lootMul()*(0.8+0.4*f), hm=(1+0.15*prN())*Math.pow(1.1,prN())*fm; list.forEach(function(o){ o.hp*=hm; o.maxhp*=hm; if(o.def&&o.def.dmg) o.def.dmg*=Math.pow(1.1,prN())*(0.8+0.4*f); }); g=Math.round(g*lm);
+  var lm=lootMul()*(0.8+0.4*f), hm=(1+0.15*prN())*Math.pow(1.1,prN())*fm*1.3, dm=Math.pow(1.1,prN())*(0.8+0.4*f)*1.25;
+  list.forEach(function(o){ o.hp*=hm; o.maxhp*=hm; if(o.def&&o.def.dmg) o.def.dmg*=dm; }); g=Math.round(g*lm);
   return {N:N,L:L,f:f,b:list,block:block,lootG:g,lootW:Math.round(g*rnd(0.6,0.9)),lootS:Math.round(g*rnd(0.3,0.5)),lootI:Math.round(g*rnd(0.1,0.2))};
+}
+function nWall(){ return camp.b.filter(function(b){return b.type!=='fence'}).length; }
+function wallMapNow(){ var m={c:{},d:[],i:{}}; camp.b.forEach(function(b){ if(b.type==='fence'&&b.alive){ m.c[b.y*64+b.x]=b; m.i[b.id]=b; if(b.hp<b.maxhp) m.d.push(b); } }); return m; }
+function blockWall(u,b,wm){
+  var d=DEFS[b.type], cx=clamp(u.x,b.x,b.x+d.w), cy=clamp(u.y,b.y,b.y+d.h), dx=cx-u.x, dy=cy-u.y, dist=Math.hypot(dx,dy);
+  if(dist<=u.rng) return null;
+  var n=Math.ceil(dist/0.3), k, w;
+  for(k=0;k<=n;k++){ var t=Math.min(1,k*0.3/dist); w=wm.c[Math.floor(u.y+dy*t)*64+Math.floor(u.x+dx*t)]; if(w) return w; }
+  return null;
 }
 function rectDist(px,py,b){
   var d=DEFS[b.type];
@@ -1346,7 +1382,7 @@ function trayLeft(){ return TKEYS.reduce(function(a,k){return a+bt.tray[k]},0); 
 function newBattle(){
   var bl=Math.max(1,barracksLvl());
   bt={t:180,units:[],projs:[],tray:{club:S.army.club,archer:S.army.archer,brute:S.army.brute,knight:S.army.knight||0,thief:S.army.thief},
-      sel:null,started:false,destroyed:0,total:camp.b.length,thDown:false,pct:0,stars:0,over:false,endT:0,shown:false,
+      sel:null,started:false,destroyed:0,total:nWall(),thDown:false,pct:0,stars:0,over:false,endT:0,shown:false,
       s:(1+0.2*(bl-1))*(1+0.04*lg('army')),dm:1+0.12*smithyLvl(),idle:0,last:0,phase:'scout',prog:'',lost:{},lostN:0};
   bt.sel=firstAvail();
 }
@@ -1415,7 +1451,7 @@ function deploy(px,py){
   renderDock(); return true;
 }
 function pick(u){
-  var alive=camp.b.filter(function(b){return b.alive});
+  var alive=camp.b.filter(function(b){return b.alive&&b.type!=='fence'});
   if(!alive.length) return null;
   var pref=TROOPS[u.type].pref, pool=pref?alive.filter(function(b){return pref.indexOf(b.type)>=0}):[];
   if(!pool.length) pool=alive;
@@ -1428,8 +1464,10 @@ function hitB(b,dmg){
   if(!b.alive) return;
   b.hp-=dmg; b.flash=0.1;
   if(b.hp<=0){
-    b.alive=false; bt.destroyed++;
-    var d=DEFS[b.type]; burst(b.x+d.w/2,b.y+d.h/2,'#8a7a62',14,3.2); burst(b.x+d.w/2,b.y+d.h/2,'#c9c2b0',8,2.2);
+    b.alive=false;
+    var d=DEFS[b.type]; burst(b.x+d.w/2,b.y+d.h/2,'#8a7a62',b.type==='fence'?6:14,3.2); if(b.type!=='fence') burst(b.x+d.w/2,b.y+d.h/2,'#c9c2b0',8,2.2);
+    if(b.type==='fence') return;
+    bt.destroyed++;
     if(b.type==='townhall') bt.thDown=true;
     bt.pct=Math.floor(bt.destroyed/bt.total*100);
     bt.stars=(bt.pct>=50?1:0)+(bt.thDown?1:0)+(bt.pct>=100?1:0);
@@ -1441,13 +1479,22 @@ function finish(){ if(bt.over) return; bt.over=true; bt.endT=0.9; }
 function step(dt){
   if(bt.over){ bt.endT-=dt; if(bt.endT<=0&&!bt.shown){ bt.shown=true; showResult(); } return; }
   if(bt.started) bt.t-=dt;
-  var u,i,j,b;
+  var u,i,j,b, wm=wallMapNow();
   for(i=0;i<bt.units.length;i++){
     u=bt.units[i]; if(u.hp<=0) continue;
     u.flash=Math.max(0,u.flash-dt); u.sw=Math.max(0,u.sw-dt);
     if(!u.t||!u.t.alive) u.t=pick(u);
     if(!u.t) continue;
-    b=u.t; var d=DEFS[b.type];
+    b=u.t; if(u.rng<=1.2){
+      var wb=blockWall(u,b,wm);
+      if(wb){
+        var cw=u.wid&&wm.i[u.wid];
+        if(cw&&rectDist(u.x,u.y,cw)<=3) wb=cw;
+        else { var nb=null, nd=3, q; for(q=0;q<wm.d.length;q++){ var dq=rectDist(u.x,u.y,wm.d[q]); if(dq<nd){ nd=dq; nb=wm.d[q]; } } if(nb) wb=nb; }
+        u.wid=wb.id; b=wb;
+      } else u.wid=0;
+    }
+    var d=DEFS[b.type];
     var cx=clamp(u.x,b.x,b.x+d.w), cy=clamp(u.y,b.y,b.y+d.h);
     var dx=cx-u.x, dy=cy-u.y, dist=Math.hypot(dx,dy);
     if(dist>u.rng){
@@ -2097,7 +2144,7 @@ function renderHud(){
   h.innerHTML='<div class="t">'+mmss(bt.t)+'</div>'+
     '<div class="bar" aria-label="Zerstörung"><i style="width:'+bt.pct+'%"></i><u style="left:50%"></u></div>'+
     '<div class="meta"><b>'+bt.pct+' %</b><span class="stars">'+starSvg(bt.stars>=1)+starSvg(bt.stars>=2)+starSvg(bt.stars>=3)+'</span></div>'+
-    '<div class="meta" style="flex-basis:100%">Rathaus '+camp.L+' · Gebäude <b>'+(camp.b.length-bt.destroyed)+'</b>/'+camp.b.length+' · Verteidigung <b>'+da+'</b> · Truppen <b>'+left+'</b></div>'+
+    '<div class="meta" style="flex-basis:100%">Rathaus '+camp.L+' · Gebäude <b>'+(bt.total-bt.destroyed)+'</b>/'+bt.total+' · Verteidigung <b>'+da+'</b> · Truppen <b>'+left+'</b></div>'+
     '<div class="meta" style="flex-basis:100%">Beute bisher '+lootLine(bt.pct/100)+'</div>'+
     (bt.started?'<div class="meta" style="flex-basis:100%">Gefallen <b>'+(bt.lostN||0)+'</b>'+TKEYS.filter(function(k){return bt.lost[k]&&Object.keys(bt.lost).length>1}).map(function(k){return ' <span class="lostk"><img alt="" style="width:16px;height:16px;image-rendering:pixelated" src="'+troopIcon(k)+'">'+bt.lost[k]+'</span>'}).join('')+'</div>'
      :'<div class="meta" style="flex-basis:100%">'+RN.gold+' <b class="'+(S.gold<searchCost()?'lowg':'')+'">'+dot('gold')+fmt(Math.floor(S.gold))+'</b> · '+tx('searchCost',{n:fmt(searchCost())})+'</div>');
@@ -2157,7 +2204,7 @@ function renderDock(){
     if(!bt.started){
       var cn=camp.b.filter(function(x){return x.type==='cannon'}).length, tw=camp.b.filter(function(x){return x.def&&x.type!=='cannon'}).length;
       var dps=Math.round(camp.b.reduce(function(a,x){return a+(x.def?x.def.dmg/x.def.rate:0)},0));
-      html+='<div class="info"><h3>Gegnerlager · Rathaus Stufe '+camp.L+'</h3><p>'+camp.b.length+' Gebäude · Kanonen '+cn+' · Türme '+tw+' · Verteidigung ≈ '+dps+' Schaden/s. Rote Kreise zeigen die Reichweite.</p><p>Beute bis '+lootLine(1)+' · Gems bis '+gemsFor(3)+' '+dot('gems')+'</p></div>';
+      html+='<div class="info"><h3>Gegnerlager · Rathaus Stufe '+camp.L+'</h3><p>'+nWall()+' Gebäude · Kanonen '+cn+' · Türme '+tw+' · Verteidigung ≈ '+dps+' Schaden/s. Rote Kreise zeigen die Reichweite.</p><p>Beute bis '+lootLine(1)+' · Gems bis '+gemsFor(3)+' '+dot('gems')+'</p></div>';
     }
     if(bt.phase==='deploy'||bt.started){ html+='<div class="tray">';
     TKEYS.forEach(function(k){

@@ -9,7 +9,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 
 ## Buttons on the map
 - 🌐 switches the language.
-- ✨ toggles the enhanced graphics (shading, shadows, flowers, drifting clouds). Turn it off if the game runs slowly on your device. The choice is saved.
+- ✨ toggles the enhanced graphics (shading, shadows, flowers, drifting clouds, background scenery such as huts, trees and rocks). Scenery hides itself wherever a building or wall stands, so it never overlaps. Turn it off if the game runs slowly on your device. The choice is saved.
 - 🔔 opens the **Raids** list (with a badge for unread raids).
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
@@ -97,11 +97,12 @@ Building limit by Town Hall level:
 - **Barracks:** the highest level counts. Troop strength (health and damage) is ×(1 + 0.2 per level above 1).
 - **Smithy:** the highest level counts. +12 % damage per level for all troops.
 - The Army menu and the Overview show the current strength values.
-- Troops get new names in every era (see Eras). Their stats stay the same.
+- Troops get new names and their own pixel models in every era (see Eras). Their stats stay the same.
 
 ### 6. Attacking
 1. Tap **⚔ Attack** in the bottom dock (you need at least one troop). The first camp is free. If you leave a camp without fighting, opening the next one from the **⚔ Attack** tab costs the same as **Search next** (until you finish a battle). The camp view shows the buildings, cannons, towers, the defense damage per second, the possible loot and gems. Red circles show the range of the defenses. Buttons: "Back", "Search next" (costs gold: 20 per Town Hall level plus 2 % of your storage space, so hoarding makes searching more expensive), "⚔ Attack". Tapping the field does not deploy anything yet.
    Camp strength follows your progress within the current Town Hall level: the bigger your army and the further your buildings are upgraded, the harder the camps get (and the more loot they hold). With the same Town Hall, a small army meets weaker camps, usually one level lower, with up to 30 % less health.
+   Camps are built tougher than your own village: more Cannons (3 to 11) and Arrow Towers (3 to 13), Ballistas from Town Hall 3, Wizard Towers from Town Hall 5, +30 % health and +25 % defense damage. The Town Hall and most defenses sit behind **walls** (see *Enemy camp walls*).
 2. Press **⚔ Attack**. The troop bar appears. Deploy each troop individually by tapping or dragging anywhere on the field outside the blocked red zone around the camp's buildings. "Back" returns to the camp view.
 3. **Auto placement** (two buttons):
    - **🎲 Random:** deploys the army on a random side.
@@ -111,6 +112,14 @@ Building limit by Town Hall level:
 6. Up to 3 **stars**: 1 for 50 % destroyed, 1 for the Town Hall, 1 for 100 %. Loot is proportional to the destroyed share (and only fits as far as your storage allows). Gems depend on the stars and the camp's level, none for zero stars. Each star gives 15 XP.
 7. Troops that survive come home. Lost troops must be trained again. During the battle the bar shows how many troops have **fallen** so far (split by type). Before the battle it shows your gold and the cost of the next search.
 8. **Give up** ends a running battle early. Loot and stars so far still count. **Return home** after the result brings you back to the village.
+
+#### Enemy camp walls
+- Enemy camps (not your own village) are protected by wooden walls. A **closed wall ring** surrounds the Town Hall and the core defenses (Cannons, Ballistas, Wizard Towers and about half of the Arrow Towers). The ring grows with the camp level (8×8 up to 12×12 fields). Many outer Cannons and Arrow Towers get their own wall ring too.
+- At Town Hall 1 to 3 there is a 1 in 5 chance that a camp has **no walls at all**. From Town Hall 4 on, every camp has walls.
+- **Melee troops** (Clubman, Brute, Knight, Looter) cannot pass walls. If a wall is in the way, they break it first. If a damaged wall is within 3 fields, they go to it and keep breaking walls there before starting a new one. Farther away, they start a new wall, so groups can open several breaches.
+- **Ranged troops** (Archer) shoot over walls and ignore them.
+- Walls are **not required** for the result: they do not count for the destroyed share, the stars or the 100 % mark, and they give no loot. Destroying only the buildings is enough.
+- The blocked deployment zone also covers wall fields.
 
 ### 7. Raids (defense)
 - Roughly every 2 hours a raid can hit **your** village, even while you are offline (at most 4 stack up). Each raid only happens with a 90 % chance.
@@ -128,7 +137,7 @@ Building limit by Town Hall level:
 | Ballista | 2×2, long range, high damage, from Town Hall 4 |
 | Wizard Tower | 2×2, magic orbs, very high damage, from Town Hall 6 |
 
-Enemy camps use the same four defenses.
+Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 
 ### 8. Progress
 - **XP and level:** building, upgrading, attacks, and repelled raids give XP. A level-up gives 3 gems. Reaching level *L* needs 50 · *L* · (*L* − 1) XP in total.
@@ -174,10 +183,18 @@ The game starts in the Stone Age. Every Legacy fresh start (Town Hall level 10) 
 | Future | Credits / Biomass / Plasma / Nanites | Quantum Bank / Bio Dome / Fusion Reactor / Nanoforge | Weapons Lab |
 
 
-Troops get new names per era too, e.g. Clubman → Soldier → Infantryman → Cyborg, and Sabre-toothed Tiger → Knight → Cavalryman → Special Forces → Plasma Warrior. Their stats stay the same. Names exist in all four languages.
+Troops get new names and their own pixel models per era too, e.g. Clubman → Soldier → Infantryman → Cyborg, and Sabre-toothed Tiger → Knight → Cavalryman → Special Forces → Plasma Warrior. Their stats stay the same. Names exist in all four languages. The models also show in the troop bar, the Army menu and the list of fallen troops, and they turn to face their direction of travel.
+
+| Era | Clubman slot | Archer slot | Brute slot | Knight slot | Looter slot |
+|---|---|---|---|---|---|
+| Stone Age | Caveman with club | Spear thrower | Mammoth | Sabre-toothed tiger | Looter with sack |
+| Middle Ages | Club bearer with shield | Bowman | Ogre with hammer | Mounted knight | Hooded rogue |
+| Industrial Age | Soldier | Rifleman | Tank | Cavalryman | Marauder |
+| Modern Age | Infantryman | Sniper | Battle tank | Special forces | Saboteur |
+| Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, defenses in `defStats`, raid strength in `raidPow`, Legacy bonuses in `LEG`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Legacy bonuses in `LEG`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
