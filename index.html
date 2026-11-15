@@ -1361,14 +1361,64 @@ function genCamp(L,f){
   list.forEach(function(o){ o.hp*=hm; o.maxhp*=hm; if(o.def&&o.def.dmg) o.def.dmg*=dm; }); g=Math.round(g*lm);
   return {N:N,L:L,f:f,b:list,block:block,lootG:g,lootW:Math.round(g*rnd(0.6,0.9)),lootS:Math.round(g*rnd(0.3,0.5)),lootI:Math.round(g*rnd(0.1,0.2))};
 }
+var wallVer=0, FCcamp=null, FCver=-1, FC={};
+function wallAt(wm,x,y){ var w=wm.c[y*64+x]; return (w&&w.alive)?w:null; }
+function getField(t,wm,solid){
+  if(FCcamp!==camp||FCver!==wallVer){ FCcamp=camp; FCver=wallVer; FC={}; }
+  var fk=solid?t.id+'s':t.id;
+  if(FC[fk]) return FC[fk];
+  var N=camp.N, d=new Float32Array(N*N).fill(1e9), hp=[], hk=[], dd=DEFS[t.type], i, j;
+  function push(k,v){ var n=hp.length; hp.push(v); hk.push(k); while(n>0){ var pr=(n-1)>>1; if(hp[pr]<=hp[n]) break; var tv=hp[pr]; hp[pr]=hp[n]; hp[n]=tv; var tk=hk[pr]; hk[pr]=hk[n]; hk[n]=tk; n=pr; } }
+  function pop(){ var k=hk[0], lv=hp.pop(), lk=hk.pop(); if(hp.length){ hp[0]=lv; hk[0]=lk; var n=0; for(;;){ var l=2*n+1, r=l+1, m=n; if(l<hp.length&&hp[l]<hp[m]) m=l; if(r<hp.length&&hp[r]<hp[m]) m=r; if(m===n) break; var tv=hp[m]; hp[m]=hp[n]; hp[n]=tv; var tk=hk[m]; hk[m]=hk[n]; hk[n]=tk; n=m; } } return k; }
+  for(j=t.y;j<t.y+dd.h;j++) for(i=t.x;i<t.x+dd.w;i++){ d[j*N+i]=0; push(j*N+i,0); }
+  while(hp.length){
+    var cur=pop(), cx=cur%N, cy=(cur-cx)/N, cd=d[cur], ox, oy;
+    for(oy=-1;oy<=1;oy++) for(ox=-1;ox<=1;ox++){
+      if(!ox&&!oy) continue; var nx=cx+ox, ny=cy+oy; if(nx<0||ny<0||nx>=N||ny>=N) continue;
+      var w=wallAt(wm,nx,ny);
+      if(solid&&(w||(ox&&oy&&(wallAt(wm,cx+ox,cy)||wallAt(wm,cx,cy+oy))))) continue;
+      var c=w?(w.hp<w.maxhp?3:7):1, nd=cd+c*((ox&&oy)?1.41:1);
+      if(nd<d[ny*N+nx]){ d[ny*N+nx]=nd; push(ny*N+nx,nd); }
+    }
+  }
+  return FC[fk]=d;
+}
 function nWall(){ return camp.b.filter(function(b){return b.type!=='fence'}).length; }
 function wallMapNow(){ var m={c:{},d:[],i:{}}; camp.b.forEach(function(b){ if(b.type==='fence'&&b.alive){ m.c[b.y*64+b.x]=b; m.i[b.id]=b; if(b.hp<b.maxhp) m.d.push(b); } }); return m; }
 function blockWall(u,b,wm){
   var d=DEFS[b.type], cx=clamp(u.x,b.x,b.x+d.w), cy=clamp(u.y,b.y,b.y+d.h), dx=cx-u.x, dy=cy-u.y, dist=Math.hypot(dx,dy);
   if(dist<=u.rng) return null;
   var n=Math.ceil(dist/0.3), k, w;
-  for(k=0;k<=n;k++){ var t=Math.min(1,k*0.3/dist); w=wm.c[Math.floor(u.y+dy*t)*64+Math.floor(u.x+dx*t)]; if(w) return w; }
+  for(k=0;k<=n;k++){ var t=Math.min(1,k*0.3/dist); w=wallAt(wm,Math.floor(u.x+dx*t),Math.floor(u.y+dy*t)); if(w) return w; }
   return null;
+}
+var CLcamp=null, CLver=-1, CL=null;
+function wallLabels(wm){
+  if(CL&&CLcamp===camp&&CLver===wallVer) return CL;
+  var N=camp.N, lab=new Int16Array(N*N).fill(-1), n=0, st=[], i;
+  for(i=0;i<N*N;i++){
+    if(lab[i]>=0||wallAt(wm,i%N,(i/N)|0)) continue;
+    lab[i]=n; st.push(i);
+    while(st.length){
+      var c=st.pop(), cx=c%N, cy=(c-cx)/N, ox, oy;
+      for(oy=-1;oy<=1;oy++) for(ox=-1;ox<=1;ox++){
+        if(!ox&&!oy) continue; var nx=cx+ox, ny=cy+oy; if(nx<0||ny<0||nx>=N||ny>=N) continue;
+        if(lab[ny*N+nx]>=0||wallAt(wm,nx,ny)) continue;
+        if(ox&&oy&&(wallAt(wm,nx,cy)||wallAt(wm,cx,ny))) continue;
+        lab[ny*N+nx]=n; st.push(ny*N+nx);
+      }
+    }
+    n++;
+  }
+  CLcamp=camp; CLver=wallVer; return CL=lab;
+}
+/* true, wenn Einheit u das Gebäude b erreichen kann, ohne eine Mauer zu zerstören */
+function reachable(u,b,wm){
+  var lab=wallLabels(wm), N=camp.N, d=DEFS[b.type], ux=clamp(Math.floor(u.x),0,N-1), uy=clamp(Math.floor(u.y),0,N-1), ls=[], i, j, ox, oy, q;
+  if(lab[uy*N+ux]>=0) ls.push(lab[uy*N+ux]);
+  else for(oy=-1;oy<=1;oy++) for(ox=-1;ox<=1;ox++){ var nx=ux+ox, ny=uy+oy; if(nx<0||ny<0||nx>=N||ny>=N) continue; q=lab[ny*N+nx]; if(q>=0&&ls.indexOf(q)<0) ls.push(q); }
+  for(j=b.y;j<b.y+d.h;j++) for(i=b.x;i<b.x+d.w;i++){ q=lab[j*N+i]; if(q>=0&&ls.indexOf(q)>=0) return true; }
+  return false;
 }
 function rectDist(px,py,b){
   var d=DEFS[b.type];
@@ -1455,6 +1505,10 @@ function pick(u){
   if(!alive.length) return null;
   var pref=TROOPS[u.type].pref, pool=pref?alive.filter(function(b){return pref.indexOf(b.type)>=0}):[];
   if(!pool.length) pool=alive;
+  if(u.rng<=1.2){
+    var wm=wallMapNow(), ra=alive.filter(function(b){return reachable(u,b,wm)});
+    if(ra.length){ var rp=pool.filter(function(b){return ra.indexOf(b)>=0}); pool=rp.length?rp:ra; }
+  }
   var best=null,bd=1e9;
   pool.forEach(function(b){ var d=rectDist(u.x,u.y,b); if(d<bd){bd=d;best=b;} });
   return best;
@@ -1462,7 +1516,9 @@ function pick(u){
 function burst(x,y,col,n,sp){ for(var i=0;i<n;i++){ var a=rnd(0,6.28),v=rnd(0.5,1)*sp; parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-0.6,t:0,life:rnd(0.35,0.7),col:col,s:rnd(0.08,0.17)}); } }
 function hitB(b,dmg){
   if(!b.alive) return;
+  var wi=b.hp>=b.maxhp;
   b.hp-=dmg; b.flash=0.1;
+  if(b.type==='fence'&&(wi||b.hp<=0)) wallVer++;
   if(b.hp<=0){
     b.alive=false;
     var d=DEFS[b.type]; burst(b.x+d.w/2,b.y+d.h/2,'#8a7a62',b.type==='fence'?6:14,3.2); if(b.type!=='fence') burst(b.x+d.w/2,b.y+d.h/2,'#c9c2b0',8,2.2);
@@ -1483,16 +1539,17 @@ function step(dt){
   for(i=0;i<bt.units.length;i++){
     u=bt.units[i]; if(u.hp<=0) continue;
     u.flash=Math.max(0,u.flash-dt); u.sw=Math.max(0,u.sw-dt);
-    if(!u.t||!u.t.alive) u.t=pick(u);
+    if(!u.t||!u.t.alive||(u.rng<=1.2&&u.tv!==wallVer&&!reachable(u,u.t,wm))) u.t=pick(u);
+    u.tv=wallVer;
     if(!u.t) continue;
-    b=u.t; if(u.rng<=1.2){
-      var wb=blockWall(u,b,wm);
-      if(wb){
-        var cw=u.wid&&wm.i[u.wid];
-        if(cw&&rectDist(u.x,u.y,cw)<=3) wb=cw;
-        else { var nb=null, nd=3, q; for(q=0;q<wm.d.length;q++){ var dq=rectDist(u.x,u.y,wm.d[q]); if(dq<nd){ nd=dq; nb=wm.d[q]; } } if(nb) wb=nb; }
-        u.wid=wb.id; b=wb;
-      } else u.wid=0;
+    b=u.t; if(u.rng<=1.2&&blockWall(u,b,wm)){
+      var sol=reachable(u,b,wm), fl=getField(b,wm,sol), ux=Math.floor(u.x), uy=Math.floor(u.y), bv=1e9, bx=-1, by=-1, ox, oy;
+      for(oy=-1;oy<=1;oy++) for(ox=-1;ox<=1;ox++){ if(!ox&&!oy) continue; var nx=ux+ox, ny=uy+oy; if(nx<0||ny<0||nx>=camp.N||ny>=camp.N) continue; if(sol&&ox&&oy&&(wallAt(wm,nx,uy)||wallAt(wm,ux,ny))) continue; var dv=fl[ny*camp.N+nx]; if(dv<bv){ bv=dv; bx=nx; by=ny; } }
+      if(bx>=0&&bv<1e9){
+        var ww=sol?null:wallAt(wm,bx,by);
+        if(ww) b=ww;
+        else { var ddx=bx+0.5-u.x, ddy=by+0.5-u.y, dd=Math.hypot(ddx,ddy); if(dd>0.001){ var mm=Math.min(u.spd*dt,dd); u.x+=ddx/dd*mm; u.y+=ddy/dd*mm; u.face=Math.atan2(ddy,ddx); } continue; }
+      }
     }
     var d=DEFS[b.type];
     var cx=clamp(u.x,b.x,b.x+d.w), cy=clamp(u.y,b.y,b.y+d.h);
@@ -1522,10 +1579,7 @@ function step(dt){
     }
   }
   bt.units=bt.units.filter(function(x){return x.hp>0});
-  for(i=0;i<bt.units.length;i++) for(j=i+1;j<bt.units.length;j++){
-    var a=bt.units[i], c=bt.units[j], ex=c.x-a.x, ey=c.y-a.y, ed=Math.hypot(ex,ey);
-    if(ed<0.42&&ed>0.001){ var p=(0.42-ed)/2*0.5, nx=ex/ed*p, ny=ey/ed*p; a.x-=nx;a.y-=ny;c.x+=nx;c.y+=ny; }
-  }
+  /* Truppen dürfen sich überlappen: keine Abstoßung */
   bt.projs.forEach(function(p){p.t+=dt});
   bt.projs=bt.projs.filter(function(p){return p.t<p.dur});
   if(bt.t<=0){ bt.t=0; finish(); }
