@@ -830,7 +830,7 @@ function gico(k,col){
   return '<i class="gi" style="--c:'+(col||'#8fa9a5')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+(kk||GI[k]||'')+'</svg></i>';
 }
 var BUILDABLE=['mine','sawmill','quarry','ironmine','gemmine','storage','barracks','camp','smithy','tower','cannon','ballista','mage','fence'];
-var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,2,2,3,3,3,4,4,4],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,2,2,2,2],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[8,12,16,20,24,30,34,38,42,50]};
+var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,1,1,1,1,1,1,1,1],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,2,2,2,2],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[8,12,16,20,24,30,34,38,42,50]};
 var TH_G=[500,1500,4000,8000,14000,22000,32000,42000,50000], TH_W=[400,1200,3000,6000,10000,16000,24000,32000,38000], TH_S=[280,840,2100,4200,7000,11200,17000,22000,29000], TH_I=[0,200,600,1400,2400,4000,6400,9600,13000];
 var PROD={mine:{r:'gold',k:0.9},sawmill:{r:'wood',k:0.9},quarry:{r:'stone',k:0.6},ironmine:{r:'iron',k:0.35},gemmine:{r:'gems',k:0.004}};
 var RK=[['g','gold'],['w','wood'],['s','stone'],['i','iron'],['m','gems']];
@@ -1186,7 +1186,7 @@ function openProg(){
   var L=plv(), lo=xpAt(L), hi=xpAt(L+1);
   var h='<h2>Fortschritt</h2><div class="row" style="margin-bottom:8px"><button class="btn gold" data-act="leg">Vermächtnis'+(th()>=MAXL?' · Neuanfang bereit':'')+'</button></div><div class="muted">Level '+L+' · '+S.xp+' XP · noch '+(hi-S.xp)+' XP bis Level '+(L+1)+' (+3 Gems)</div><div class="meter"><i style="width:'+((S.xp-lo)/(hi-lo)*100)+'%"></i></div>';
   h+='<h3>XP pro Ausbau</h3><div class="list">';
-  ['townhall'].concat(BUILDABLE).forEach(function(t){ var mn=S.b.filter(function(x){return x.type===t}).reduce(function(m,x){return Math.min(m,x.lvl)},99), nx=mn<MAXL?'Stufe '+(mn+1)+': +'+xpv(t,mn+1)+' XP':(mn===99?'':'Maximalstufe erreicht'); h+='<div class="item"><div class="nm">'+DEFS[t].n+'</div><div class="ds">Neu +'+xpv(t,1)+' XP'+(nx?' · '+nx:'')+'</div></div>'; });
+  ['townhall'].concat(BUILDABLE).forEach(function(t){ if(t==='fence') return; var mn=S.b.filter(function(x){return x.type===t}).reduce(function(m,x){return Math.min(m,x.lvl)},99), nx=mn<MAXL?'Stufe '+(mn+1)+': +'+xpv(t,mn+1)+' XP':(mn===99?'':'Maximalstufe erreicht'); h+='<div class="item"><div class="nm">'+DEFS[t].n+'</div><div class="ds">Neu +'+xpv(t,1)+' XP'+(nx?' · '+nx:'')+'</div></div>'; });
   h+='<div class="item"><div class="nm">Angriff</div><div class="ds">+15 XP pro Stern</div></div></div><h3>Erfolge</h3><div class="list">';
   ACH.map(function(a,i){ return {a:a,i:i,r:S.ach[a.id]?2:(achDone(a)?0:1)}; }).sort(function(x,y){ return x.r-y.r||x.i-y.i; }).forEach(function(o){ var a=o.a, v=Math.min(a.m,a.v()), c=S.ach[a.id];
     h+='<div class="item"><div class="nm">'+a.n+'</div><div class="ds">'+a.d+' ('+v+'/'+a.m+') · +'+achG(a)+' Gems'+(a.x?' · +'+a.x+' XP':'')+'</div><div class="act">'+(c?'<span class="muted">✓</span>':'<button class="mini go" data-act="claim" data-k="'+a.id+'"'+(achDone(a)?'':' disabled')+'>Holen</button>')+'</div></div>'; });
@@ -2260,7 +2260,7 @@ function renderDock(){
     var b=selected(); if(!b){ el.innerHTML=homeCards(); $('#inf').hidden=true; sideSync(); return; }
     if(b){
       var d=DEFS[b.type], up=canUp(b), c=upCost(b);
-      html+='<div class="info"><h3>'+d.n+' · Stufe '+b.lvl+(up?' → '+(b.lvl+1):'')+'</h3><p>'+detail(b)+'</p>'+statRows(b,up);
+      html+='<div class="info"><h3>'+d.n+(b.type==='fence'?'':' · Stufe '+b.lvl+(up?' → '+(b.lvl+1):''))+'</h3><p>'+detail(b)+'</p>'+statRows(b,up);
       if(up){
         if(b.type==='townhall'){ var un=unlockText(b.lvl); if(un) html+='<p>Schaltet frei: '+un+'</p>'; }
         var ms=missing(c); html+='<p>Ausbau kostet '+costHtml(c)+'</p>';
@@ -2374,7 +2374,7 @@ function openOverview(){
     '<input type="file" id="bkFile" accept=".txt,.json,text/plain,application/json" hidden>'+
     '<div class="muted" style="font-size:12px;margin-top:4px'+(bkOld()?';color:var(--danger)':'')+'">'+bkText()+'</div>';
   ['townhall'].concat(BUILDABLE).forEach(function(t){
-    var L=S.b.filter(function(b){return b.type===t}); if(!L.length) return;
+    if(t==='fence') return; var L=S.b.filter(function(b){return b.type===t}); if(!L.length) return;
     h+='<div class="muted" style="margin:12px 0 4px">'+DEFS[t].n+(t==='townhall'?'':' · '+L.length+' / '+limitOf(t))+'</div><div class="list">';
     L.forEach(function(b){ h+='<div class="item"><div class="nm">Stufe '+b.lvl+(b.lvl>=MAXL?' (max)':'')+'</div><div class="ds">'+detail(b)+'</div><div class="act"><button class="mini" data-act="focus" data-id="'+b.id+'">Zeigen</button></div></div>'; });
     h+='</div>';
