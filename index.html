@@ -619,7 +619,12 @@ Tauschen|Trade|Cambiar|Échanger
 Wirklich alles löschen? Nochmal tippen.|Really delete everything? Tap again.|¿Borrar todo de verdad? Toca otra vez.|Vraiment tout effacer ? Touche encore.
 Spielstand zurücksetzen|Reset game|Reiniciar partida|Réinitialiser la partie
 Alle 2 Std. kann ein Überfall kommen, auch offline. Deine Wehrkraft: |A raid can come every 2 hours, even offline. Your defense power: |Cada 2 h puede llegar una incursión, incluso sin conexión. Tu fuerza defensiva: |Un raid peut arriver toutes les 2 h, même hors ligne. Ta puissance défensive : 
- (Türme, Kanonen, Truppen). Baue Verteidigung!| (towers, cannons, troops). Build defenses!| (torres, cañones, tropas). ¡Construye defensas!| (tours, canons, troupes). Construis des défenses !
+ (Türme, Kanonen, Truppen, Zäune). Baue Verteidigung!| (towers, cannons, troops, fences). Build defenses!| (torres, cañones, tropas, vallas). ¡Construye defensas!| (tours, canons, troupes, clôtures). Construis des défenses !
+Zaunschutz: |Fence cover: |Protección de vallas: |Protection des clôtures : 
+ (Wehr +| (defense +| (defensa +| (défense +
+ %) · Lager/Minen: | %) · storage/mines: | %) · almacén/minas: | %) · stockage/mines : 
+ % (Verlust −| % (loss −| % (pérdida −| % (perte −
+ %). Zäune an den Seiten von Gebäuden zählen.| %). Fences along building sides count.| %). Cuentan las vallas junto a los lados de los edificios.| %). Les clôtures le long des côtés des bâtiments comptent.
 Überfälle|Raids|Incursiones|Raids
 Noch keine Überfälle.|No raids yet.|Aún no hay incursiones.|Pas encore de raids.
 Geplündert|Plundered|Saqueado|Pillé
@@ -697,10 +702,12 @@ function tr(s){
 var TXT={
  searchCost:['Suchen kostet {n}','Search costs {n}','Buscar cuesta {n}','Chercher coûte {n}'],
  searchMissing:['Zum Suchen fehlt: {res}','Not enough {res} to search','Falta {res} para buscar','Il manque {res} pour chercher'],
- tut0:['Schritt 1/4 · Tippe die Blasen über den Gebäuden an, um Rohstoffe einzusammeln.','Step 1/4 · Tap the bubbles above your buildings to collect resources.','Paso 1/4 · Toca las burbujas sobre los edificios para recoger recursos.','Étape 1/4 · Touche les bulles au-dessus des bâtiments pour récolter des ressources.'],
- tut1:['Schritt 2/4 · Baue einen Pfeilturm: Tab Militär, dann Pfeilturm. Er schützt dein Dorf vor Überfällen.','Step 2/4 · Build an Arrow Tower: Military tab, then Arrow Tower. It protects your village from raids.','Paso 2/4 · Construye una torre de flechas: pestaña Militar y luego torre de flechas. Protege tu aldea de las incursiones.','Étape 2/4 · Construis une tour à flèches : onglet Militaire, puis tour à flèches. Elle protège ton village des raids.'],
- tut2:['Schritt 3/4 · Öffne die Armee in der Seitenleiste und bilde Truppen aus.','Step 3/4 · Open the army in the side bar and train troops.','Paso 3/4 · Abre el ejército en la barra lateral y entrena tropas.','Étape 3/4 · Ouvre l\'armée dans la barre latérale et entraîne des troupes.'],
- tut3:['Schritt 4/4 · Tippe ⚔ Angriff, suche ein Lager und greife an.','Step 4/4 · Tap ⚔ Attack, scout a camp and strike.','Paso 4/4 · Toca ⚔ Ataque, busca un campamento y ataca.','Étape 4/4 · Touche ⚔ Attaque, repère un camp et attaque.']
+ tut0:['Schritt 1/6 · Tippe die Blasen über den Gebäuden an, um Rohstoffe einzusammeln.','Step 1/6 · Tap the bubbles above your buildings to collect resources.','Paso 1/6 · Toca las burbujas sobre los edificios para recoger recursos.','Étape 1/6 · Touche les bulles au-dessus des bâtiments pour récolter des ressources.'],
+ tut1:['Schritt 2/6 · Baue einen Pfeilturm: Tab Militär, dann Pfeilturm. Er schützt dein Dorf vor Überfällen.','Step 2/6 · Build an Arrow Tower: Military tab, then Arrow Tower. It protects your village from raids.','Paso 2/6 · Construye una torre de flechas: pestaña Militar y luego torre de flechas. Protege tu aldea de las incursiones.','Étape 2/6 · Construis une tour à flèches : onglet Militaire, puis tour à flèches. Elle protège ton village des raids.'],
+ tut2:['Schritt 3/6 · Öffne die Armee in der Seitenleiste und bilde Truppen aus.','Step 3/6 · Open the army in the side bar and train troops.','Paso 3/6 · Abre el ejército en la barra lateral y entrena tropas.','Étape 3/6 · Ouvre l\'armée dans la barre latérale et entraîne des troupes.'],
+ tut3:['Schritt 4/6 · Tippe ⚔ Angriff, suche ein Lager und greife an.','Step 4/6 · Tap ⚔ Attack, scout a camp and strike.','Paso 4/6 · Toca ⚔ Ataque, busca un campamento y ataca.','Étape 4/6 · Touche ⚔ Attaque, repère un camp et attaque.'],
+ tut4:['Schritt 5/6 · Setze Zäune um Rathaus und Lager: Tab Zäune, dann über die Gebäudeseiten ziehen. Das erhöht deine Wehr gegen Überfälle.','Step 5/6 · Fence in your Town Hall and storage: Fences tab, then drag along the building sides. This raises your defense against raids.','Paso 5/6 · Cerca el Ayuntamiento y el almacén: pestaña Vallas y arrastra junto a los lados de los edificios. Aumenta tu defensa contra incursiones.','Étape 5/6 · Entoure l\'Hôtel de ville et le stockage de clôtures : onglet Clôtures, puis glisse le long des côtés des bâtiments. Cela renforce ta défense contre les raids.'],
+ tut5:['Schritt 6/6 · Tippe oben im Spielfeld auf den Überfälle-Knopf und prüfe deine Wehrkraft.','Step 6/6 · Tap the Raids button at the top of the field and check your defense power.','Paso 6/6 · Toca el botón de Incursiones arriba en el campo y revisa tu fuerza defensiva.','Étape 6/6 · Touche le bouton Raids en haut du terrain et vérifie ta puissance défensive.']
 };
 function tx(k,v){ var e=TXT[k], s=e[LI[LANG]||0]||e[0]; return s.replace(/\{(\w+)\}/g,function(m,n){ return v&&v[n]!==undefined?tr(''+v[n]):m; }); }
 function trNode(n){
@@ -794,7 +801,7 @@ var DEFS={
   quarry:{n:'Steinbruch',w:2,h:2,col:'#8a8f96',cg:200,cw:350,cs:80,ci:20,d:''},
   ironmine:{n:'Eisenmine',w:2,h:2,col:'#55627a',cg:400,cw:300,cs:200,ci:40,d:''},
   gemmine:{n:'Edelsteinmine',w:2,h:2,col:'#3f8a93',cg:600,cw:400,cs:250,ci:80,cm:10,d:'Fördert langsam Gems.'},
-  fence:{n:'Holzzaun',w:1,h:1,col:'#8a6a43',cg:0,cw:25,d:'Schützt dein Dorf. Reiner Zierzaun, kein Ausbau.'},
+  fence:{n:'Holzzaun',w:1,h:1,col:'#8a6a43',cg:0,cw:15,d:'Schützt dein Dorf. Reiner Zierzaun, kein Ausbau.'},
   ballista:{n:'Ballista',w:2,h:2,col:'#7a5a3a',cg:800,cw:300,cs:450,ci:160,d:'Schwerer Bolzen, hohe Reichweite. Verteidigt auch offline.'},
   mage:{n:'Zauberturm',w:2,h:2,col:'#6a4f9a',cg:1100,cw:400,cs:650,ci:300,d:'Magische Kugeln, starker Schaden. Verteidigt auch offline.'},
   smithy:{n:'Schmiede',w:2,h:2,col:'#6b4f4f',cg:700,cw:300,cs:400,ci:200,d:'Mehr Schaden für alle Truppen.'}
@@ -830,7 +837,7 @@ function gico(k,col){
   return '<i class="gi" style="--c:'+(col||'#8fa9a5')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+(kk||GI[k]||'')+'</svg></i>';
 }
 var BUILDABLE=['mine','sawmill','quarry','ironmine','gemmine','storage','barracks','camp','smithy','tower','cannon','ballista','mage','fence'];
-var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,1,1,1,1,1,1,1,1],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,2,2,2,2],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[8,12,16,20,24,30,34,38,42,50]};
+var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,1,1,1,1,1,1,1,1],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,1,1,1,1],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[12,18,24,30,36,44,50,58,64,75]};
 var TH_G=[500,1500,4000,8000,14000,22000,32000,42000,50000], TH_W=[400,1200,3000,6000,10000,16000,24000,32000,38000], TH_S=[280,840,2100,4200,7000,11200,17000,22000,29000], TH_I=[0,200,600,1400,2400,4000,6400,9600,13000];
 var PROD={mine:{r:'gold',k:0.9},sawmill:{r:'wood',k:0.9},quarry:{r:'stone',k:0.6},ironmine:{r:'iron',k:0.35},gemmine:{r:'gems',k:0.004}};
 var RK=[['g','gold'],['w','wood'],['s','stone'],['i','iron'],['m','gems']];
@@ -941,7 +948,7 @@ Object.keys(TNAME).forEach(function(k){
 /* Speicher-Schlüssel bleiben 'dorfsturm', damit alte Spielstände erhalten bleiben */
 var KEY='dorfsturm.v1', WN='dorfsturm:', storeOK=(function(){try{localStorage.setItem(KEY+'.p',1);localStorage.removeItem(KEY+'.p');return true}catch(e){return false}})(), away=0, origT=0;
 function fresh(){
-  return {pr:{n:0,pts:0,tot:0,up:{}},cnt:{win:0,tri:0,rep:0},rt:Date.now(),rlog:[],xp:0,tut:0,ach:{},gold:1800,wood:1800,stone:600,iron:200,gems:25,stars:0,nid:7,t:Date.now(),
+  return {pr:{n:0,pts:0,tot:0,up:{}},cnt:{win:0,tri:0,rep:0},rt:Date.now()+7200000,rlog:[],xp:0,tut:0,ach:{},gold:1800,wood:1800,stone:600,iron:200,gems:25,stars:0,nid:7,t:Date.now(),
     army:{club:8,archer:0,brute:0,knight:0,thief:2},
     b:[{id:1,type:'townhall',x:9,y:9,lvl:1,store:0},
        {id:2,type:'mine',x:5,y:6,lvl:1,store:40},
@@ -967,16 +974,36 @@ function load(){
   return s;
 }
 var S=load();
+/* Nur eine Schmiede/Kaserne zählt: überzählige entfernen (höchste Stufe bleibt), halbe Grundkosten zurück */
+function capSingles(){ var cut=0; ['smithy','barracks'].forEach(function(t){
+  var L=S.b.filter(function(b){return b.type===t}).sort(function(a,b){return b.lvl-a.lvl}); if(L.length<2) return;
+  var d=DEFS[t]; L.slice(1).forEach(function(x){ S.b.splice(S.b.indexOf(x),1); S.gold+=Math.round((d.cg||0)/2); S.wood+=Math.round((d.cw||0)/2); S.stone+=Math.round((d.cs||0)/2); S.iron+=Math.round((d.ci||0)/2); cut++; });
+}); if(cut) setTimeout(function(){ try{ toast(cut+' überzählige Gebäude entfernt (Schmiede/Kaserne), Kosten halb erstattet'); }catch(e){} },1500); }
+capSingles();
 /* ----- Überfälle (auch offline) ----- */
 var RAID_MS=2*3600*1000, raidMsg=null;
 function defPow(t,l){ var q=defStats(t,l); return (t==='ballista'||t==='mage')?q.dmg/q.rate*10+q.hp*0.2:q.dmg*q.rate*12+q.hp*0.2; }
 function villageDef(){
   var d=0; S.b.forEach(function(b){
     if(isDef(b.type)) d+=defPow(b.type,b.lvl);
-    else if(b.type==='fence') d+=3;
   });
   TKEYS.forEach(function(k){ d+=S.army[k]*(TROOPS[k].hp*0.08+TROOPS[k].dmg*TROOPS[k].rate); });
-  return d*(1+0.08*lg('def'));
+  return d*(1+0.08*lg('def'))*(1+0.35*wallCover().all);
+}
+/* Mauerschutz: Anteil der Gebäude-Seiten (ohne Ecken), die ein Zaun deckt. all = alle (Rathaus 40 %, Rest 60 % (Verteidigung 2x)), res = Lager/Minen */
+function wallCover(){
+  var F={}, a=0, ad=0, r=0, rd=0, tc=0;
+  S.b.forEach(function(b){ if(b.type==='fence') F[b.y*1000+b.x]=1; });
+  S.b.forEach(function(b){
+    var d=DEFS[b.type]; if(b.type==='fence'||!d) return;
+    var tot=0, got=0, x, y;
+    for(x=b.x;x<b.x+d.w;x++){ tot+=2; if(F[(b.y-1)*1000+x]) got++; if(F[(b.y+d.h)*1000+x]) got++; }
+    for(y=b.y;y<b.y+d.h;y++){ tot+=2; if(F[y*1000+b.x-1]) got++; if(F[y*1000+b.x+d.w]) got++; }
+    var c=got/tot, w=isDef(b.type)?2:1;
+    if(b.type==='townhall') tc=c; else { a+=c*w; ad+=w; }
+    if(b.type==='storage'||PROD[b.type]){ r+=c; rd++; }
+  });
+  return {all:0.4*tc+0.6*(ad?a/ad:0), th:tc, res:rd?r/rd:0};
 }
 /* ----- Vermächtnis (Neuanfang nach dem Spiel) ----- */
 function prD(){ if(!S.pr) S.pr={n:0,pts:0,tot:0,up:{}}; if(!S.pr.up) S.pr.up={}; return S.pr; }
@@ -1013,11 +1040,11 @@ function doPrestige(){
   S=N; S.t=Date.now(); sel=null; ghost=null; mode='home'; save(); closeSheet(true); renderAll(); centerView();
   var E3=ERAS[eraIdx()]; toast(tr('Neues Zeitalter:')+' '+E3.ic+' '+tr(E3.n)+' · +'+g+' '+tr('Ruhm'));
 }
-function raidPow(){ var t=0; S.b.forEach(function(b){ if(b.type==='townhall') t=b.lvl; }); return 520*Math.pow(t||1,1.5)*(1+0.12*Math.max(0,(t||1)-6))*(1+0.2*prN())*Math.pow(1.1,prN())*rnd(0.8,1.6); }
-function runRaid(){
-  var D=villageDef(), R=raidPow(), r={t:Date.now(),ok:D>=R,d:Math.round(D),r:Math.round(R),loss:{}};
+function raidPow(){ var t=0; S.b.forEach(function(b){ if(b.type==='townhall') t=b.lvl; }); return 175*Math.pow(t||1,2.05)*(1+0.2*prN())*Math.pow(1.1,prN())*rnd(0.85,1.35); }
+function runRaid(t){
+  var D=villageDef(), R=raidPow(), r={t:t||Date.now(),ok:D>=R,d:Math.round(D),r:Math.round(R),loss:{}};
   if(!r.ok){
-    var f=clamp((1-D/R)*0.6,0.08,0.4);
+    var f=Math.min(clamp((1-D/R)*0.6,0.05,0.3)*(1-0.45*wallCover().res),th()<=2?0.1:1); r.w=Math.round(wallCover().res*100);
     ['gold','wood','stone','iron'].forEach(function(k){ var l=Math.floor(S[k]*f); S[k]-=l; r.loss[k]=l; });
     S.b.forEach(function(b){ if(PROD[b.type]&&b.type!=='gemmine') b.store=(b.store||0)*(1-f*0.6); });
     r.f=Math.round(f*100);
@@ -1026,9 +1053,15 @@ function runRaid(){
   return r;
 }
 function raidCheck(){
-  var n=Math.min(4,Math.floor((Date.now()-S.rt)/RAID_MS)); if(n<1) return;
-  S.rt+=n*RAID_MS; if(Date.now()-S.rt>RAID_MS) S.rt=Date.now();
-  var rs=[]; for(var i=0;i<n;i++) if(Math.random()<0.9) rs.push(runRaid());
+  var now=Date.now(), due=Math.floor((now-S.rt)/RAID_MS); if(due<1) return;
+  /* Nach Abwesenheit höchstens 2 Überfälle, mit ihren echten Zeitpunkten; verpasste Zeit wird nicht nachgeholt */
+  var n=Math.min(2,due), first=S.rt+(due-n+1)*RAID_MS;
+  S.rt+=due*RAID_MS;
+  var rs=[]; for(var i=0;i<n;i++){
+    var tt=first+i*RAID_MS, last=S.rlog[0];
+    if(last&&tt-last.t<RAID_MS*0.6) continue; /* zu dicht am letzten Überfall */
+    if(Math.random()<0.9) rs.push(runRaid(tt));
+  }
   if(!rs.length) return;
   var lost=rs.filter(function(x){return !x.ok}).length;
   raidMsg='Überfälle: '+rs.length+' · abgewehrt '+(rs.length-lost)+(lost?' · '+lost+' erfolgreich (Beute verloren)':'')+'';
@@ -1112,7 +1145,7 @@ document.addEventListener('change',function(e){
   if(!e.target||e.target.id!=='bkFile') return;
   var fl=e.target.files&&e.target.files[0]; if(!fl) return;
   var r=new FileReader();
-  r.onload=function(){ try{ var t=String(r.result).trim(), ns; if(t.charAt(0)==='{'){ ns=JSON.parse(t); if(!ns||!Array.isArray(ns.b)||!ns.b.some(function(b){return b.type==='townhall'})) throw 0; if(!ns.army) ns.army={}; TKEYS.forEach(function(k){ if(!ns.army[k]) ns.army[k]=0; }); fixState(ns); } else ns=fromCode(t); ns.t=Date.now(); S=ns; save(); sel=null; closeSheet(true); renderAll(); toast('Spielstand geladen'); }catch(x){ toast('Ungültige Datei'); } };
+  r.onload=function(){ try{ var t=String(r.result).trim(), ns; if(t.charAt(0)==='{'){ ns=JSON.parse(t); if(!ns||!Array.isArray(ns.b)||!ns.b.some(function(b){return b.type==='townhall'})) throw 0; if(!ns.army) ns.army={}; TKEYS.forEach(function(k){ if(!ns.army[k]) ns.army[k]=0; }); fixState(ns); } else ns=fromCode(t); ns.t=Date.now(); S=ns; capSingles(); save(); sel=null; closeSheet(true); renderAll(); toast('Spielstand geladen'); }catch(x){ toast('Ungültige Datei'); } };
   r.onerror=function(){ toast('Datei nicht lesbar'); };
   r.readAsText(fl);
 });
@@ -1203,13 +1236,15 @@ function tutMark(){
   else if(n===1) q=tab!=='mil'?'#dock .tab[data-k=mil]':'#dock .card[data-t=tower]';
   else if(n===2) q='#side [data-act=army]';
   else if(n===3) q='#dock .tab.atk';
+  else if(n===4){ if(countOf('fence')>=3){ tutDone(4); n=5; } else q=tab!=='fen'?'#dock .tab[data-k=fen]':'#dock .card[data-t=fence]'; }
+  if(n===5) q='#qb [data-act=raids]';
   if(!q) return;
   var els=document.querySelectorAll(q), key=n+q;
   els.forEach(function(e){ e.classList.add('tutpulse'); });
   if(els[0]&&key!==tutLast){ tutLast=key; try{ els[0].scrollIntoView({block:'nearest',inline:'center'}); }catch(e){} }
 }
 setInterval(tutMark,350);
-function tutHint(){ var n=S.tut|0; return n<4?'<div class="hint tut">'+tx('tut'+n)+'</div>':''; }
+function tutHint(){ var n=S.tut|0; return n<6?'<div class="hint tut">'+tx('tut'+n)+'</div>':''; }
 function countOf(t){ return S.b.filter(function(b){return b.type===t}).length; }
 function limitOf(t){ return LIMITS[t][th()-1]; }
 function capacity(){ var c=2500+th()*1000; S.b.forEach(function(b){ if(b.type==='storage') c+=2200*b.lvl; }); return Math.round(c*(1+0.1*lg('cap'))); }
@@ -1461,16 +1496,23 @@ function genPlan(sd,c,spread,order,rand){
   });
   return list;
 }
-function sim(list){
+function sim(list,dt){
+  dt=dt||0.05;
   var oB=bt,oC=camp,oP=parts,oT=texts,res;
   try{
     camp=JSON.parse(JSON.stringify(oC)); bt=JSON.parse(JSON.stringify(oB)); parts=[]; texts=[];
     bt.units=[]; bt.projs=[]; bt.started=true; bt.over=false; bt.t=180; bt.destroyed=0; bt.stars=0; bt.pct=0; bt.thDown=false; bt.idle=0; bt.lost={}; bt.lostN=0; bt.tray={club:0,archer:0,brute:0,knight:0,thief:0};
     list.forEach(function(q){ bt.units.push(mkUnit(q.k,q.x,q.y)); });
-    for(var i=0;i<1000&&!bt.over;i++) step(0.2);
+    for(var i=0,n=Math.ceil(200/dt);i<n&&!bt.over;i++) step(dt);
     res={stars:bt.stars,pct:bt.pct};
   }catch(e){ res={stars:0,pct:0}; }
   bt=oB; camp=oC; parts=oP; texts=oT; return res;
+}
+/* Mittel aus Läufen mit verschiedenen Frame-Zeiten (echte Kämpfe laufen je nach Gerät mit 1/60 bis 1/20 s) */
+function simAvg(list){
+  var ds=[0.05,0.033,0.0167], sp=0, st=3;
+  ds.forEach(function(d){ var r=sim(list,d); sp+=r.pct; if(r.stars<st) st=r.stars; });
+  return {stars:st,pct:Math.round(sp/ds.length)};
 }
 function progText(r){ return 'Prognose: '+'★'.repeat(r.stars)+'☆'.repeat(3-r.stars)+' · '+r.pct+' % zerstört · '+(r.stars>=1?'Sieg':'Niederlage'); }
 function placePlan(list,r){
@@ -1480,17 +1522,23 @@ function placePlan(list,r){
 }
 function autoRandom(){
   var list=genPlan(ri(0,3),rnd(5,GC-5),rnd(3,18),['brute','knight','club','archer','thief'],true);
-  placePlan(list,sim(list));
+  placePlan(list,simAvg(list));
 }
 function autoBest(){
   toast('Berechne beste Platzierung …');
   setTimeout(function(){
     if(!bt||bt.started||bt.phase!=='deploy') return;
-    var orders=[['brute','knight','club','archer','thief'],['thief','club','knight','brute','archer']], best=null, bs=-1;
+    var orders=[['brute','knight','club','archer','thief'],['thief','club','knight','brute','archer']], best=null, bs=-1, cand=[];
     for(var sd=0;sd<4;sd++) [6,13,20].forEach(function(c){ [3,12].forEach(function(sp){ orders.forEach(function(o){
-      var l=genPlan(sd,c,sp,o,false), r=sim(l), sc=r.stars*1000+r.pct;
-      if(sc>bs){ bs=sc; best={l:l,r:r}; }
+      var l=genPlan(sd,c,sp,o,false), r=sim(l,0.1);
+      cand.push({l:l,sc:r.stars*1000+r.pct});
     }); }); });
+    /* grob sortieren, die besten 3 mit gemittelten Läufen prüfen */
+    cand.sort(function(a,b){return b.sc-a.sc});
+    cand.slice(0,3).forEach(function(c){
+      var r=simAvg(c.l), sc=r.stars*1000+r.pct;
+      if(sc>bs){ bs=sc; best={l:c.l,r:r}; }
+    });
     if(best&&bt&&!bt.started) placePlan(best.l,best.r);
   },30);
 }
@@ -1521,17 +1569,19 @@ function exposure(u,b){
   });
   return e;
 }
+var EXPW=1, WALLPEN=5, WALKW=1; /* WALKW: Gewicht Laufstrecke; Mauerfelder kosten im Wegfeld 3 (angeschlagen) bzw. 7 */ /* EXPW: Gewicht Turmgefahr, WALLPEN: Wegstrafe (Felder) für Ziele hinter Mauern */
 function pick(u){
   var alive=camp.b.filter(function(b){return b.alive&&b.type!=='fence'});
   if(!alive.length) return null;
   var pref=TROOPS[u.type].pref, pool=pref?alive.filter(function(b){return pref.indexOf(b.type)>=0}):[];
   if(!pool.length) pool=alive;
-  if(u.rng<=1.2){
-    var wm=wallMapNow(), ra=alive.filter(function(b){return reachable(u,b,wm)});
-    if(ra.length){ var rp=pool.filter(function(b){return ra.indexOf(b)>=0}); pool=rp.length?rp:ra; }
-  }
-  var best=null,bd=1e9;
-  pool.forEach(function(b){ var d=rectDist(u.x,u.y,b)+20*exposure(u,b)/u.maxhp; if(d<bd){bd=d;best=b;} });
+  var wm=u.rng<=1.2?wallMapNow():null, best=null, bd=1e9;
+  /* Kosten = Weg + Gefahr durch Verteidigung + Strafe, falls erst eine Mauer fallen muss */
+  var N=camp.N, ux=clamp(Math.floor(u.x),0,N-1), uy=clamp(Math.floor(u.y),0,N-1);
+  pool.forEach(function(b){
+    var walk=rectDist(u.x,u.y,b);
+    if(wm){ var wv=getField(b,wm,false)[uy*N+ux]; walk=wv<1e8?Math.max(walk,wv):walk+WALLPEN; }
+    var d=WALKW*walk+EXPW*exposure(u,b)/u.maxhp; if(d<bd){bd=d;best=b;} });
   return best;
 }
 function burst(x,y,col,n,sp){ for(var i=0;i<n;i++){ var a=rnd(0,6.28),v=rnd(0.5,1)*sp; parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-0.6,t:0,life:rnd(0.35,0.7),col:col,s:rnd(0.08,0.17)}); } }
@@ -2348,15 +2398,15 @@ function gemsHtml(){
   return h+'</div><button class="link" data-act="reset">'+(resetArm?'Wirklich alles löschen? Nochmal tippen.':'Spielstand zurücksetzen')+'</button>';
 }
 function raidHtml(){
-  var h='<h2>Überfälle</h2><div class="muted">Alle 2 Std. kann ein Überfall kommen, auch offline. Deine Wehrkraft: '+fmt(villageDef())+' (Türme, Kanonen, Truppen). Baue Verteidigung!</div><div class="list">';
+  var h='<h2>Überfälle</h2><div class="muted">Alle 2 Std. kann ein Überfall kommen, auch offline. Deine Wehrkraft: '+fmt(villageDef())+' (Türme, Kanonen, Truppen, Zäune). Baue Verteidigung!</div><div class="muted" style="margin-top:6px">Zaunschutz: '+Math.round(wallCover().all*100)+' % (Wehr +'+Math.round(wallCover().all*35)+' %) · Lager/Minen: '+Math.round(wallCover().res*100)+' % (Verlust −'+Math.round(wallCover().res*45)+' %). Zäune an den Seiten von Gebäuden zählen.</div><div class="list">';
   if(!S.rlog.length) h+='<div class="item"><div class="ds">Noch keine Überfälle.</div></div>';
   S.rlog.slice(0,10).forEach(function(r){ var tm=new Date(r.t).toLocaleString(LOCS[LANG]||'de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
-    h+='<div class="item"><div class="nm">'+(r.ok?'Abgewehrt':'Geplündert')+' <span class="muted">'+tm+'</span></div><div class="ds">Wehr '+r.d+' / Angriff '+r.r+(r.ok?' · +'+(r.xp||10)+' XP':' · −'+['gold','wood','stone','iron'].map(function(k){return fmt(r.loss[k])+' '+RN[k]}).join(', '))+'</div></div>'; });
+    h+='<div class="item"><div class="nm">'+(r.ok?'Abgewehrt':'Geplündert')+' <span class="muted" style="margin-left:8px;font-size:13px">'+tm+'</span></div><div class="ds">Wehr '+r.d+' / Angriff '+r.r+(r.ok?' · +'+(r.xp||10)+' XP':' · −'+['gold','wood','stone','iron'].map(function(k){return fmt(r.loss[k])+' '+RN[k]}).join(', '))+'</div></div>'; });
   return h+'</div>';
 }
 function raidUnread(){ var t=S.rseen||0; return S.rlog.filter(function(r){return r.t>t}).length; }
 function raidBadge(){ var b=document.querySelector('#qb [data-act=raids]'); if(!b) return; var n=raidUnread(); b.setAttribute('data-n',n>0?String(n):''); }
-function openRaids(){ sheetName='raids'; openSheet(raidHtml()); S.rseen=Date.now(); save(); raidBadge(); }
+function openRaids(){ if((S.tut|0)===5) tutDone(5); sheetName='raids'; openSheet(raidHtml()); S.rseen=Date.now(); save(); raidBadge(); }
 function openOverview(){
   sheetName='ov';
   var h='<h2>Übersicht</h2><div class="res-big">';
@@ -2434,6 +2484,7 @@ document.addEventListener('click',function(e){
     case 'buyfill': var bft=t.getAttribute('data-t'); if(countOf(bft)>=limitOf(bft)){ toast('Limit erreicht'); break; } if(!findSpot(bft)){ toast('Kein Platz mehr im Dorf'); break; } if(!fillBuy(newCost(bft))){ toast('Zu wenig Gems'); break; }
     case 'build':
       var tp=t.getAttribute('data-t'), sp=findSpot(tp);
+      if(countOf(tp)>=limitOf(tp)){ toast('Limit erreicht'); break; }
       if(!sp){ toast('Kein Platz mehr im Dorf'); break; }
       ghost={type:tp,x:sp.x,y:sp.y,moveId:null,cost:newCost(tp)}; mode='place'; sel=null; closeSheet(true); renderDock(); break;
     case 'cancel': ghost=null; mode='home'; renderDock(); break;
@@ -2441,6 +2492,7 @@ document.addEventListener('click',function(e){
       if(!ghost||!canPlace(ghost.type,ghost.x,ghost.y,ghost.moveId)){ toast('Hier ist kein Platz'); break; }
       if(ghost.moveId){ var mb=S.b.filter(function(x){return x.id===ghost.moveId})[0]; mb.x=ghost.x; mb.y=ghost.y; sel=mb.id; }
       else {
+        if(countOf(ghost.type)>=limitOf(ghost.type)){ toast('Limit erreicht'); ghost=null; mode='home'; renderAll(); break; }
         if(!afford(ghost.cost)){ toast('Zu wenig Rohstoffe'); break; }
         spend(ghost.cost);
         var nb={id:S.nid++,type:ghost.type,x:ghost.x,y:ghost.y,lvl:1,store:0}; S.b.push(nb); sel=nb.id; if(nb.type==='tower') tutDone(1);
@@ -2485,7 +2537,7 @@ document.addEventListener('click',function(e){
     case 'bkExport': bkExport(); break;
     case 'bkImport': var bf=$('#bkFile'); if(bf){ bf.value=''; bf.click(); } break;
     case 'codeGet': save(); var cb=$('#codeBox'); cb.value=toCode(); cb.select(); try{navigator.clipboard.writeText(cb.value).catch(function(){});}catch(e){} toast('Code erzeugt'); break;
-    case 'codeSet': try{ var ns=fromCode($('#codeBox').value); ns.t=Date.now(); S=ns; save(); sel=null; closeSheet(true); renderAll(); toast('Spielstand geladen'); }catch(e){ toast('Ungültiger Code'); } break;
+    case 'codeSet': try{ var ns=fromCode($('#codeBox').value); ns.t=Date.now(); S=ns; capSingles(); save(); sel=null; closeSheet(true); renderAll(); toast('Spielstand geladen'); }catch(e){ toast('Ungültiger Code'); } break;
     case 'focus': sel=+t.getAttribute('data-id'); closeSheet(true); renderAll(); break;
     case 'swap': if(S.gems<10){ toast('Zu wenig Gems'); break; } if(S[k]>=resCap(k)){ toast('Speicher voll'); break; } S[k]=Math.min(resCap(k),S[k]+swapAmt(k)); S.gems-=10; save(); openShop(); renderAll(); break;
     case 'pick': if(bt&&bt.tray[k]>0){ bt.sel=k; renderDock(); } break;
