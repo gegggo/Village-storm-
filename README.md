@@ -14,7 +14,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
 - **Bottom dock:** the tabs *Economy*, *Military*, *Fences* with the building cards, and the **⚔ Attack** tab.
-- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era.
+- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras. During a battle the **⏩ 2x** button sits top left of the field.
 
 ## Getting started
 - Online: GitHub Pages (Settings → Pages → Branch `main`).
@@ -102,13 +102,15 @@ Building limit by Town Hall level:
 ### 6. Attacking
 1. Tap **⚔ Attack** in the bottom dock (you need at least one troop). The first camp is free. If you leave a camp without fighting, opening the next one from the **⚔ Attack** tab costs the same as **Search next** (until you finish a battle). The camp view shows the buildings, cannons, towers, the defense damage per second, the possible loot and gems. Red circles show the range of the defenses. Buttons: "Back", "Search next" (costs gold: 20 per Town Hall level plus 2 % of your storage space, so hoarding makes searching more expensive), "⚔ Attack". Tapping the field does not deploy anything yet.
    Camp strength follows your progress within the current Town Hall level: the bigger your army and the further your buildings are upgraded, the harder the camps get (and the more loot they hold). With the same Town Hall, a small army meets weaker camps, usually one level lower, with up to 30 % less health.
-   Camps are built tougher than your own village: more Cannons (3 to 11) and Arrow Towers (3 to 13), Ballistas from Town Hall 3, Wizard Towers from Town Hall 5, +30 % health and +25 % defense damage. The Town Hall and most defenses sit behind **walls** (see *Enemy camp walls*).
+   Camps are built tougher than your own village: more Cannons (3 to 11) and Arrow Towers (3 to 13) from Town Hall 4 on, Ballistas from Town Hall 3, Wizard Towers from Town Hall 5, +30 % health and +25 % defense damage. The Town Hall and most defenses sit behind **walls** (see *Enemy camp walls*).
+   **Easier camps at Town Hall 1 to 3 (every era):** Cannons 1 / 2 / 2, Arrow Towers 1 / 2 / 3, building health and defense damage ×0.4 / ×0.55 / ×0.7, at most 2 Mines and 2 Sawmills.
 2. Press **⚔ Attack**. The troop bar appears. Deploy each troop individually by tapping or dragging anywhere on the field outside the blocked red zone around the camp's buildings. "Back" returns to the camp view.
 3. **Auto placement** (two buttons):
    - **🎲 Random:** deploys the army on a random side.
    - **★ Best placement:** simulates 48 variants in advance and picks the best.
 4. Both show a **forecast** at the bottom, e.g. "★☆☆ · 35 % destroyed · Victory". Victory from 1 star. The forecast is only an estimate (coarser time steps than the real battle). Calculation takes a few seconds. There is no forecast for troops you place yourself.
 5. Troops fight on their own. You have 3 minutes. The battle starts with your first deployed troop. Destroy as much as possible, above all the camp's **Town Hall**.
+   **⏩ 2x** (top left of the field, only during a battle) doubles the battle speed; tap again for normal speed.
 6. Up to 3 **stars**: 1 for 50 % destroyed, 1 for the Town Hall, 1 for 100 %. Loot is proportional to the destroyed share (and only fits as far as your storage allows). Gems depend on the stars and the camp's level, none for zero stars. Each star gives 15 XP.
 7. Troops that survive come home. Lost troops must be trained again. During the battle the bar shows how many troops have **fallen** so far (split by type). Before the battle it shows your gold and the cost of the next search.
 8. **Give up** ends a running battle early. Loot and stars so far still count. **Return home** after the result brings you back to the village.
@@ -173,7 +175,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 - Each fresh start raises the **world level**: raids +20 %, enemy camps +15 % health, loot +30 % (each on top of a further +10 % for raids and camps).
 
 ## Eras
-The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era.
+The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige).
 
 | Era | Gold / Wood / Stone / Iron slot | Mine / Sawmill / Quarry / Iron Mine slot | Smithy |
 |---|---|---|---|
