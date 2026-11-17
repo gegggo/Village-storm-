@@ -295,7 +295,10 @@ img.ic,.card img{pointer-events:none}
 
 <script>
 /* ----- Sprachen / Languages ----- */
-var I18N=`Höhlenlager|Cave Camp|Campamento de cuevas|Camp troglodyte
+var I18N=`Ressourcen-Totem|Resource Totem|Tótem de recursos|Totem de ressources
+Mehr Produktion und mehr Lagerplatz für alle Rohstoffe.|More production and storage space for all resources.|Más producción y más espacio de almacén para todos los recursos.|Plus de production et de stockage pour toutes les ressources.
+Sonstiges|Other|Otros|Autres
+Höhlenlager|Cave Camp|Campamento de cuevas|Camp troglodyte
 Holzfäller|Lumberjack|Leñador|Bûcheron
 Markt|Market|Mercado|Marché
 Fabrik|Factory|Fábrica|Usine
@@ -348,7 +351,7 @@ Industriezeit|Industrial Age|Era industrial|Ère industrielle
 Moderne|Modern Age|Era moderna|Ère moderne
 Zukunft|Future|Futuro|Futur
 Neues Zeitalter:|New era:|Nueva era:|Nouvelle ère :
-Vermächtnis|Legacy|Legado|Héritage
+Prestige|Prestige|Prestigio|Prestige
 Neuanfänge |Fresh starts |Nuevos comienzos |Nouveaux départs 
  · Ruhm | · Glory | · Gloria | · Gloire 
  Ruhm| Glory| Gloria| Gloire
@@ -356,7 +359,7 @@ Weltstufe |World level |Nivel de mundo |Niveau du monde
 Ab Rathaus 10 kannst du neu anfangen: Dorf, Rohstoffe und Armee werden zurückgesetzt. Du behältst Gems, Sterne, Level und Erfolge. Dafür gibt es Ruhm für dauerhafte Boni. Jede Weltstufe macht Überfälle (+20 %) und Lager (+15 % Leben) stärker, die Beute wächst um 30 %.|From Town Hall 10 you can start over: village, resources and army are reset. You keep gems, stars, level and achievements. In return you earn Glory for permanent bonuses. Each world level makes raids (+20 %) and camps (+15 % health) stronger, and loot grows by 30 %.|Desde el Ayuntamiento 10 puedes empezar de nuevo: aldea, recursos y ejército se reinician. Conservas gemas, estrellas, nivel y logros. A cambio ganas Gloria para bonos permanentes. Cada nivel de mundo hace más fuertes las incursiones (+20 %) y los campamentos (+15 % de vida), y el botín crece un 30 %.|Dès l'Hôtel de ville 10, tu peux recommencer : village, ressources et armée sont réinitialisés. Tu gardes gemmes, étoiles, niveau et succès. En échange tu gagnes de la Gloire pour des bonus permanents. Chaque niveau du monde renforce les raids (+20 %) et les camps (+15 % de vie), et le butin augmente de 30 %.
 Wirklich neu anfangen? Nochmal tippen.|Really start over? Tap again.|¿Empezar de nuevo? Toca otra vez.|Vraiment recommencer ? Touche encore.
 Neuanfang ab Rathaus 10|Fresh start from Town Hall 10|Nuevo comienzo desde Ayuntamiento 10|Nouveau départ dès Hôtel de ville 10
-Neuanfang freigeschaltet: Fortschritt → Vermächtnis|Fresh start unlocked: Progress → Legacy|Nuevo comienzo desbloqueado: Progreso → Legado|Nouveau départ débloqué : Progrès → Héritage
+Neuanfang freigeschaltet: Fortschritt → Prestige|Fresh start unlocked: Progress → Prestige|Nuevo comienzo desbloqueado: Progreso → Prestigio|Nouveau départ débloqué : Progrès → Prestige
 Neuanfang bereit|Fresh start ready|Nuevo comienzo listo|Nouveau départ prêt
 Neuanfang! |Fresh start! |¡Nuevo comienzo! |Nouveau départ ! 
 Neuanfang|Fresh start|Nuevo comienzo|Nouveau départ
@@ -540,8 +543,8 @@ Phönix|Phoenix|Fénix|Phénix
 Neuanfang durchführen|Do a fresh start|Hacer un nuevo comienzo|Faire un nouveau départ
 Zeitreisender|Time Traveler|Viajero del tiempo|Voyageur du temps
 3 Neuanfänge|3 fresh starts|3 nuevos comienzos|3 nouveaux départs
-Vermächtnisträger|Heir|Heredero|Héritier
-5 Bonusstufen im Vermächtnis|5 Legacy bonus levels|5 niveles de bonos del legado|5 niveaux de bonus d'héritage
+Prestige-Profi|Prestige Pro|Experto en prestigio|Pro du prestige
+5 Bonusstufen im Prestige|5 Prestige bonus levels|5 niveles de bonos de prestigio|5 niveaux de bonus de prestige
  Gebäude besitzen| buildings owned| edificios en propiedad| bâtiments possédés
  ★ sammeln| ★ collected| ★ conseguidas| ★ collectées
  Truppen in der Armee| troops in the army| tropas en el ejército| troupes dans l'armée
@@ -706,7 +709,7 @@ var TXT={
  tut1:['Schritt 2/6 · Baue einen Pfeilturm: Tab Militär, dann Pfeilturm. Er schützt dein Dorf vor Überfällen.','Step 2/6 · Build an Arrow Tower: Military tab, then Arrow Tower. It protects your village from raids.','Paso 2/6 · Construye una torre de flechas: pestaña Militar y luego torre de flechas. Protege tu aldea de las incursiones.','Étape 2/6 · Construis une tour à flèches : onglet Militaire, puis tour à flèches. Elle protège ton village des raids.'],
  tut2:['Schritt 3/6 · Öffne die Armee in der Seitenleiste und bilde Truppen aus.','Step 3/6 · Open the army in the side bar and train troops.','Paso 3/6 · Abre el ejército en la barra lateral y entrena tropas.','Étape 3/6 · Ouvre l\'armée dans la barre latérale et entraîne des troupes.'],
  tut3:['Schritt 4/6 · Tippe ⚔ Angriff, suche ein Lager und greife an.','Step 4/6 · Tap ⚔ Attack, scout a camp and strike.','Paso 4/6 · Toca ⚔ Ataque, busca un campamento y ataca.','Étape 4/6 · Touche ⚔ Attaque, repère un camp et attaque.'],
- tut4:['Schritt 5/6 · Setze Zäune um Rathaus und Lager: Tab Zäune, dann über die Gebäudeseiten ziehen. Das erhöht deine Wehr gegen Überfälle.','Step 5/6 · Fence in your Town Hall and storage: Fences tab, then drag along the building sides. This raises your defense against raids.','Paso 5/6 · Cerca el Ayuntamiento y el almacén: pestaña Vallas y arrastra junto a los lados de los edificios. Aumenta tu defensa contra incursiones.','Étape 5/6 · Entoure l\'Hôtel de ville et le stockage de clôtures : onglet Clôtures, puis glisse le long des côtés des bâtiments. Cela renforce ta défense contre les raids.'],
+ tut4:['Schritt 5/6 · Setze Zäune um Rathaus und Lager: Tab Sonstiges, dann über die Gebäudeseiten ziehen. Das erhöht deine Wehr gegen Überfälle.','Step 5/6 · Fence in your Town Hall and storage: Other tab, then drag along the building sides. This raises your defense against raids.','Paso 5/6 · Cerca el Ayuntamiento y el almacén: pestaña Otros y arrastra junto a los lados de los edificios. Aumenta tu defensa contra incursiones.','Étape 5/6 · Entoure l\'Hôtel de ville et le stockage de clôtures : onglet Autres, puis glisse le long des côtés des bâtiments. Cela renforce ta défense contre les raids.'],
  tut5:['Schritt 6/6 · Tippe oben im Spielfeld auf den Überfälle-Knopf und prüfe deine Wehrkraft.','Step 6/6 · Tap the Raids button at the top of the field and check your defense power.','Paso 6/6 · Toca el botón de Incursiones arriba en el campo y revisa tu fuerza defensiva.','Étape 6/6 · Touche le bouton Raids en haut du terrain et vérifie ta puissance défensive.']
 };
 function tx(k,v){ var e=TXT[k], s=e[LI[LANG]||0]||e[0]; return s.replace(/\{(\w+)\}/g,function(m,n){ return v&&v[n]!==undefined?tr(''+v[n]):m; }); }
@@ -804,7 +807,8 @@ var DEFS={
   fence:{n:'Holzzaun',w:1,h:1,col:'#8a6a43',cg:0,cw:15,d:'Schützt dein Dorf. Reiner Zierzaun, kein Ausbau.'},
   ballista:{n:'Ballista',w:2,h:2,col:'#7a5a3a',cg:800,cw:300,cs:450,ci:160,d:'Schwerer Bolzen, hohe Reichweite. Verteidigt auch offline.'},
   mage:{n:'Zauberturm',w:2,h:2,col:'#6a4f9a',cg:1100,cw:400,cs:650,ci:300,d:'Magische Kugeln, starker Schaden. Verteidigt auch offline.'},
-  smithy:{n:'Schmiede',w:2,h:2,col:'#6b4f4f',cg:700,cw:300,cs:400,ci:200,d:'Mehr Schaden für alle Truppen.'}
+  smithy:{n:'Schmiede',w:2,h:2,col:'#6b4f4f',cg:700,cw:300,cs:400,ci:200,d:'Mehr Schaden für alle Truppen.'},
+  totem:{n:'Ressourcen-Totem',w:2,h:2,col:'#a86a3a',cg:250,cw:200,cs:140,ci:0,d:'Mehr Produktion und mehr Lagerplatz für alle Rohstoffe.'}
 };
 /* ----- Symbole für Gebäude und Truppen ----- */
 var GI={
@@ -818,6 +822,7 @@ var GI={
  camp:'<path d="M2 20L12 4l10 16z" fill="#c7a46a"/><path d="M12 4l10 16h-6z" fill="#a9854d"/><path d="M12 20l-3-7h6z" fill="#2a1f12"/><path d="M12 4V2" stroke="#e9f0ea" stroke-width="1.6"/>',
  smithy:'<path d="M3 8h13c0 3 2 3 5 3-1 3-3 3-5 3v2h-9v-2c-2 0-4-1-4-3z" fill="#9aa5ae"/><rect x="6" y="17" width="10" height="3" rx="1" fill="#6b757d"/><path d="M12 2l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="#ff9d2e"/>',
  fence:'<path d="M4 20V8l2-2 2 2v12M11 20V8l2-2 2 2v12M18 20V8l2-2 2 2v12" fill="#cf9560" transform="translate(-2 0)"/><path d="M2 12h20M2 17h20" stroke="#94643a" stroke-width="2"/>',
+ totem:'<rect x="9" y="3" width="6" height="17" rx="1" fill="#a86a3a"/><rect x="4" y="8" width="16" height="3" fill="#f3bb4a"/><circle cx="12" cy="6" r="1.2" fill="#162427"/><rect x="6" y="19" width="12" height="3" rx="1" fill="#6b757d"/>',
  townhall:'<path d="M3 20V11l9-6 9 6v9z" fill="#c9b9a0"/><path d="M2 11l10-7 10 7" stroke="#8c3a2e" stroke-width="3" fill="none" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" rx="1" fill="#5a3b24"/><path d="M12 4V1l4 1-4 1" fill="#f3bb4a" stroke="#f3bb4a"/>',
  club:'<path d="M5 20l8-8" stroke="#94643a" stroke-width="3.4" stroke-linecap="round"/><path d="M12 12l6-8a3.6 3.6 0 0 1 3 3l-8 6z" fill="#cf9560"/><circle cx="17" cy="7" r=".9" fill="#7b5731"/><circle cx="19" cy="9" r=".9" fill="#7b5731"/>',
  archer:'<path d="M7 3c8 3 8 15 0 18" stroke="#cf9560" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M7 3v18" stroke="#e9f0ea" stroke-width="1"/><path d="M3 12h16" stroke="#e9f0ea" stroke-width="1.8"/><path d="M19 12l-3-2.4v4.8z" fill="#e9f0ea"/><path d="M3 12l-1.5-2M3 12l-1.5 2" stroke="#59d18a" stroke-width="1.6"/>',
@@ -836,8 +841,8 @@ function gico(k,col){
   var kk=(typeof eraIdx==='function'&&GIE[k+'_'+eraIdx()])?GIE[k+'_'+eraIdx()]:null;
   return '<i class="gi" style="--c:'+(col||'#8fa9a5')+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+(kk||GI[k]||'')+'</svg></i>';
 }
-var BUILDABLE=['mine','sawmill','quarry','ironmine','gemmine','storage','barracks','camp','smithy','tower','cannon','ballista','mage','fence'];
-var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,1,1,1,1,1,1,1,1],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,1,1,1,1],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[12,18,24,30,36,44,50,58,64,75]};
+var BUILDABLE=['mine','sawmill','quarry','ironmine','gemmine','storage','barracks','camp','smithy','tower','cannon','ballista','mage','totem','fence'];
+var LIMITS={mine:[1,2,3,3,4,5,5,6,6,7],sawmill:[1,2,3,3,4,5,5,6,6,7],storage:[1,1,2,2,3,3,4,4,5,5],barracks:[1,1,1,1,1,1,1,1,1,1],camp:[1,2,2,3,3,4,5,5,6,6],quarry:[1,1,2,2,3,3,4,4,5,5],ironmine:[0,1,1,2,2,3,3,4,4,5],gemmine:[0,0,1,1,2,2,3,3,3,4],smithy:[0,1,1,1,1,1,1,1,1,1],tower:[1,2,3,4,5,6,7,8,9,10],cannon:[0,1,1,2,2,3,3,4,4,5],ballista:[0,0,0,1,1,2,2,3,3,4],mage:[0,0,0,0,0,1,1,2,2,3],fence:[12,18,24,30,36,44,50,58,64,75],totem:[1,1,1,1,1,1,1,1,1,1]};
 var TH_G=[500,1500,4000,8000,14000,22000,32000,42000,50000], TH_W=[400,1200,3000,6000,10000,16000,24000,32000,38000], TH_S=[280,840,2100,4200,7000,11200,17000,22000,29000], TH_I=[0,200,600,1400,2400,4000,6400,9600,13000];
 var PROD={mine:{r:'gold',k:0.9},sawmill:{r:'wood',k:0.9},quarry:{r:'stone',k:0.6},ironmine:{r:'iron',k:0.35},gemmine:{r:'gems',k:0.004}};
 var RK=[['g','gold'],['w','wood'],['s','stone'],['i','iron'],['m','gems']];
@@ -852,7 +857,7 @@ function fillBuy(c){ var n=fillNeed(c); if(n<=0) return true; if(S.gems-(c.m||0)
 function fillBtn(c,act,attr){ if(afford(c)) return ''; var n=fillNeed(c), ok=S.gems-(c.m||0)>=n; return '<button class="mini fill" data-act="'+act+'" '+attr+(ok?'':' disabled')+'>Mit Gems auffüllen · '+n+' '+dot('gems')+'</button>'; }
 function doUp(b){
   var c=upCost(b); if(!afford(c)) return false;
-  spend(c); b.lvl++; addXp(xpv(b.type,b.lvl)); var d2=DEFS[b.type]; burst(b.x+d2.w/2,b.y+d2.h/2,'#f3bb4a',16,3); floatText(b.x+d2.w/2,b.y,'Stufe '+b.lvl,'#e9f0ea'); if(b.type==='townhall'&&b.lvl>=MAXL) toast('Neuanfang freigeschaltet: Fortschritt → Vermächtnis'); save(); return true;
+  spend(c); b.lvl++; addXp(xpv(b.type,b.lvl)); var d2=DEFS[b.type]; burst(b.x+d2.w/2,b.y+d2.h/2,'#f3bb4a',16,3); floatText(b.x+d2.w/2,b.y,'Stufe '+b.lvl,'#e9f0ea'); if(b.type==='townhall'&&b.lvl>=MAXL) toast('Neuanfang freigeschaltet: Fortschritt → Prestige'); save(); return true;
 }
 var TROOPS={
   club:{n:'Keulenträger',hs:1,g:25,w:0,hp:95,dmg:16,rng:0.55,spd:2.3,rate:1.0,col:'#e3a64c',need:1,pref:null,d:'Nahkämpfer. Greift das Nächstbeste an.'},
@@ -1005,7 +1010,7 @@ function wallCover(){
   });
   return {all:0.4*tc+0.6*(ad?a/ad:0), th:tc, res:rd?r/rd:0};
 }
-/* ----- Vermächtnis (Neuanfang nach dem Spiel) ----- */
+/* ----- Prestige (Neuanfang nach dem Spiel) ----- */
 function prD(){ if(!S.pr) S.pr={n:0,pts:0,tot:0,up:{}}; if(!S.pr.up) S.pr.up={}; return S.pr; }
 function prN(){ return S&&S.pr?S.pr.n||0:0; }
 function lg(id){ return (S&&S.pr&&S.pr.up&&S.pr.up[id])||0; }
@@ -1025,7 +1030,7 @@ function legCost(o){ return o.c*(lg(o.id)+1); }
 function glory(){ var n=0; for(var k in S.ach) if(S.ach[k]) n++; return 20+Math.floor((S.stars||0)/2)+2*plv()+n+5*prN(); }
 var legArm=false;
 function openLegacy(){
-  var P=prD(), ok=th()>=MAXL, h='<h2>Vermächtnis</h2><div class="muted">Neuanfänge '+P.n+' · Ruhm '+P.pts+' · Weltstufe '+(P.n+1)+'</div>';
+  var P=prD(), ok=th()>=MAXL, h='<h2>Prestige</h2><div class="muted">Neuanfänge '+P.n+' · Ruhm '+P.pts+' · Weltstufe '+(P.n+1)+'</div>';
   h+='<div class="muted" style="margin:8px 0">Ab Rathaus 10 kannst du neu anfangen: Dorf, Rohstoffe und Armee werden zurückgesetzt. Du behältst Gems, Sterne, Level und Erfolge. Dafür gibt es Ruhm für dauerhafte Boni. Jede Weltstufe macht Überfälle (+20 %) und Lager (+15 % Leben) stärker, die Beute wächst um 30 %.</div>';
   h+='<div class="row"><button class="btn gold" data-act="prestige"'+(ok?'':' disabled')+'>'+(legArm?'Wirklich neu anfangen? Nochmal tippen.':ok?'Neuanfang · +'+glory()+' Ruhm':'Neuanfang ab Rathaus 10')+'</button></div><h3>Boni</h3><div class="list">';
   LEG.forEach(function(o){ var l=lg(o.id), mx=l>=o.max, c=legCost(o);
@@ -1116,8 +1121,8 @@ function toCode(){
 function fixState(s){
   var d={gold:1800,wood:1800,stone:600,iron:200,gems:25,stars:0,xp:0};
   Object.keys(d).forEach(function(k){ if(typeof s[k]!=='number'||!isFinite(s[k])) s[k]=d[k]; });
-  if(!s.cnt) s.cnt={win:0,tri:0,rep:0}; if(!s.pr) s.pr={n:0,pts:0,tot:0,up:{}}; if(!s.pr.up) s.pr.up={}; if(!s.ach) s.ach={}; if(!s.rlog) s.rlog=[]; if(!s.rt) s.rt=Date.now();
-  var mid=0; s.b=s.b.filter(function(b){ return b&&DEFS[b.type]; }); s.b.forEach(function(b){ if(!(b.lvl>=1)) b.lvl=1; if(!isFinite(b.store)) b.store=0; if(b.id>mid) mid=b.id; });
+  if(!s.cnt||typeof s.cnt!=='object') s.cnt={win:0,tri:0,rep:0}; if(!s.pr||typeof s.pr!=='object') s.pr={n:0,pts:0,tot:0,up:{}}; if(!s.pr.up||typeof s.pr.up!=='object') s.pr.up={}; ['n','pts','tot'].forEach(function(k){ var v=+s.pr[k]; s.pr[k]=isFinite(v)&&v>0?Math.floor(v):0; }); if(!s.ach||typeof s.ach!=='object'||Array.isArray(s.ach)) s.ach={}; if(!Array.isArray(s.rlog)) s.rlog=[]; if(!s.rt) s.rt=Date.now();
+  var mid=0; s.b=s.b.filter(function(b){ return b&&DEFS[b.type]; }); s.b.forEach(function(b){ b.lvl=(b.lvl>=1)?Math.min(MAXL,Math.floor(b.lvl)):1; if(!isFinite(b.store)) b.store=0; if(b.id>mid) mid=b.id; });
   if(!(s.nid>mid)) s.nid=mid+1;
   return s;
 }
@@ -1152,7 +1157,7 @@ document.addEventListener('change',function(e){
 setTimeout(function(){ if(bkOld()) toast('Kein Backup seit über 24 Std. Übersicht → Datei sichern.'); },6000);
 
 /* ----- Hilfsfunktionen Spiel ----- */
-var XPB={townhall:40,storage:12,barracks:15,smithy:15,fence:2};
+var XPB={totem:20,townhall:40,storage:12,barracks:15,smithy:15,fence:2};
 function xpv(t,l){ return (XPB[t]||10)*l; }
 function xpAt(L){ return 50*L*(L-1); }
 function plv(){ var L=1; while(S.xp>=xpAt(L+1)) L++; return L; }
@@ -1209,7 +1214,7 @@ var ACH=[
  {id:'pl20',n:'Meisterstratege',d:'Spielerlevel 20',g:80,x:0,v:function(){return plv()},m:20},
  {id:'pr1',n:'Phönix',d:'Neuanfang durchführen',g:80,x:0,v:function(){return prN()},m:1},
  {id:'pr3',n:'Zeitreisender',d:'3 Neuanfänge',g:150,x:0,v:function(){return prN()},m:3},
- {id:'lg5',n:'Vermächtnisträger',d:'5 Bonusstufen im Vermächtnis',g:40,x:0,v:function(){var n=0,u=prD().up;for(var k in u) n+=u[k]||0;return n},m:5}
+ {id:'lg5',n:'Prestige-Profi',d:'5 Bonusstufen im Prestige',g:40,x:0,v:function(){var n=0,u=prD().up;for(var k in u) n+=u[k]||0;return n},m:5}
 ];
 function cn(k){ return (S.cnt&&S.cnt[k])||0; }
 function mx(t){ return S.b.reduce(function(a,b){return b.type===t?Math.max(a,b.lvl):a},0); }
@@ -1217,7 +1222,7 @@ function achDone(a){ return a.v()>=a.m; }
 function achReady(){ return ACH.filter(function(a){return !S.ach[a.id]&&achDone(a)}).length; }
 function openProg(){
   var L=plv(), lo=xpAt(L), hi=xpAt(L+1);
-  var h='<h2>Fortschritt</h2><div class="row" style="margin-bottom:8px"><button class="btn gold" data-act="leg">Vermächtnis'+(th()>=MAXL?' · Neuanfang bereit':'')+'</button></div><div class="muted">Level '+L+' · '+S.xp+' XP · noch '+(hi-S.xp)+' XP bis Level '+(L+1)+' (+3 Gems)</div><div class="meter"><i style="width:'+((S.xp-lo)/(hi-lo)*100)+'%"></i></div>';
+  var h='<h2>Fortschritt</h2><div class="row" style="margin-bottom:8px"><button class="btn gold" data-act="leg">Prestige'+(th()>=MAXL?' · Neuanfang bereit':'')+'</button></div><div class="muted">Level '+L+' · '+S.xp+' XP · noch '+(hi-S.xp)+' XP bis Level '+(L+1)+' (+3 Gems)</div><div class="meter"><i style="width:'+((S.xp-lo)/(hi-lo)*100)+'%"></i></div>';
   h+='<h3>XP pro Ausbau</h3><div class="list">';
   ['townhall'].concat(BUILDABLE).forEach(function(t){ if(t==='fence') return; var mn=S.b.filter(function(x){return x.type===t}).reduce(function(m,x){return Math.min(m,x.lvl)},99), nx=mn<MAXL?'Stufe '+(mn+1)+': +'+xpv(t,mn+1)+' XP':(mn===99?'':'Maximalstufe erreicht'); h+='<div class="item"><div class="nm">'+DEFS[t].n+'</div><div class="ds">Neu +'+xpv(t,1)+' XP'+(nx?' · '+nx:'')+'</div></div>'; });
   h+='<div class="item"><div class="nm">Angriff</div><div class="ds">+15 XP pro Stern</div></div></div><h3>Erfolge</h3><div class="list">';
@@ -1247,7 +1252,7 @@ setInterval(tutMark,350);
 function tutHint(){ var n=S.tut|0; return n<6?'<div class="hint tut">'+tx('tut'+n)+'</div>':''; }
 function countOf(t){ return S.b.filter(function(b){return b.type===t}).length; }
 function limitOf(t){ return LIMITS[t][th()-1]; }
-function capacity(){ var c=2500+th()*1000; S.b.forEach(function(b){ if(b.type==='storage') c+=2200*b.lvl; }); return Math.round(c*(1+0.1*lg('cap'))); }
+function capacity(){ var c=2500+th()*1000; S.b.forEach(function(b){ if(b.type==='storage') c+=2200*b.lvl; }); return Math.round(c*(1+0.1*lg('cap'))*(1+0.05*totemLvl())); }
 function searchCost(){ return Math.round((20*th()+0.02*capacity())/5)*5; } // 2 % des Lagers: Horten macht Suchen teurer
 function housingCap(){ var h=0; S.b.forEach(function(b){ if(b.type==='camp') h+=12+6*b.lvl; }); return h; }
 function housingUsed(){ return TKEYS.reduce(function(a,k){return a+S.army[k]*TROOPS[k].hs},0); }
@@ -1255,12 +1260,14 @@ function barracksLvl(){ var m=0; S.b.forEach(function(b){ if(b.type==='barracks'
 function newCost(t){ var d=DEFS[t],k=(t==='fence'?1:1+0.55*countOf(t))*costMul(); return {g:Math.round(d.cg*k/10)*10,w:Math.round(d.cw*k/10)*10,s:Math.round((d.cs||0)*k/10)*10,i:Math.round((d.ci||0)*k/10)*10,m:Math.round((d.cm||0)*k)}; }
 function upCost(b){
   if(b.type==='townhall'){ var tk=(1+0.1*b.lvl)*costMul(); return {g:Math.round((TH_G[b.lvl-1]||0)*tk/10)*10,w:Math.round((TH_W[b.lvl-1]||0)*tk/10)*10,s:Math.round((TH_S[b.lvl-1]||0)*tk/10)*10,i:Math.round((TH_I[b.lvl-1]||0)*tk/10)*10}; }
+  if(b.type==='totem'){ var th2=upCost({type:'townhall',lvl:b.lvl}); return {g:Math.round(th2.g/20)*10,w:Math.round(th2.w/20)*10,s:Math.round(th2.s/20)*10,i:Math.round(th2.i/20)*10}; }
   var d=DEFS[b.type],m=Math.pow(b.lvl+1,2.0)*0.55*costMul();
   return {g:Math.round(d.cg*m/10)*10,w:Math.round(d.cw*m/10)*10,s:Math.round((d.cs||0)*m/10)*10,i:Math.round((d.ci||0)*m/10)*10,m:Math.round((d.cm||0)*m*0.5)};
 }
 function canUp(b){ return b.type!=='fence' && b.lvl<MAXL && (b.type==='townhall' || b.lvl<th()); }
-function rate(b){ return PROD[b.type].k*b.lvl*BAL.prod*(1+0.08*lg('prod')); }
+function rate(b){ return PROD[b.type].k*b.lvl*BAL.prod*(1+0.08*lg('prod'))*(1+0.05*totemLvl()); }
 function resCap(r){ return r==='gems'?1e9:(r==='stone'||r==='iron'?Math.round(capacity()*0.6):capacity()); }
+function totemLvl(){ var m=0; S.b.forEach(function(b){ if(b.type==='totem'&&b.lvl>m) m=b.lvl; }); return m; }
 function smithyLvl(){ var m=0; S.b.forEach(function(b){ if(b.type==='smithy'&&b.lvl>m) m=b.lvl; }); return m; }
 function spend(c){ RK.forEach(function(p){ S[p[1]]-=(c[p[0]]||0); }); }
 function fillMin(){ return 20+5*Math.min(4,prN()); }
@@ -1472,7 +1479,7 @@ function newBattle(){
   bt={t:180,units:[],projs:[],tray:{club:S.army.club,archer:S.army.archer,brute:S.army.brute,knight:S.army.knight||0,thief:S.army.thief},
       sel:null,started:false,destroyed:0,total:nWall(),thDown:false,pct:0,stars:0,over:false,endT:0,shown:false,
       s:(1+0.2*(bl-1))*(1+0.04*lg('army')),dm:1+0.12*smithyLvl(),idle:0,last:0,phase:'scout',prog:'',lost:{},lostN:0};
-  bt.sel=firstAvail();
+  bt.sel=firstAvail(); gameSpd=1;
 }
 function enterCamp(){
   var f=progFrac(), L=clamp(Math.round(th()-1.5+2.5*f+rnd(-0.6,0.6)),1,MAXL);
@@ -1525,22 +1532,34 @@ function autoRandom(){
   placePlan(list,simAvg(list));
 }
 function autoBest(){
+  if(autoBest.busy) return; autoBest.busy=true;
   toast('Berechne beste Platzierung …');
-  setTimeout(function(){
-    if(!bt||bt.started||bt.phase!=='deploy') return;
-    var orders=[['brute','knight','club','archer','thief'],['thief','club','knight','brute','archer']], best=null, bs=-1, cand=[];
-    for(var sd=0;sd<4;sd++) [6,13,20].forEach(function(c){ [3,12].forEach(function(sp){ orders.forEach(function(o){
-      var l=genPlan(sd,c,sp,o,false), r=sim(l,0.1);
-      cand.push({l:l,sc:r.stars*1000+r.pct});
-    }); }); });
-    /* grob sortieren, die besten 3 mit gemittelten Läufen prüfen */
-    cand.sort(function(a,b){return b.sc-a.sc});
-    cand.slice(0,3).forEach(function(c){
-      var r=simAvg(c.l), sc=r.stars*1000+r.pct;
-      if(sc>bs){ bs=sc; best={l:c.l,r:r}; }
-    });
-    if(best&&bt&&!bt.started) placePlan(best.l,best.r);
-  },30);
+  var b0=bt, orders=[['brute','knight','club','archer','thief'],['thief','club','knight','brute','archer']], cand=[], q=[], done=0, tot=22, stage=0;
+  function ev(sd,c,sp,oi){ var l=genPlan(sd,c,sp,orders[oi],false), r=sim(l,0.2); cand.push({l:l,sd:sd,oi:oi,sc:r.stars*1000+r.pct}); }
+  function byScore(a,c){ return c.sc-a.sc; }
+  /* Stufe 1: 4 Seiten x 2 Reihenfolgen, grob */
+  [0,1,2,3].forEach(function(sd){ [0,1].forEach(function(oi){ q.push(function(){ ev(sd,13,12,oi); }); }); });
+  function next(){
+    if(bt!==b0||!bt||bt.started||bt.phase!=='deploy'){ autoBest.busy=false; return; }
+    var t0=performance.now();
+    while(q.length&&performance.now()-t0<30){ q.shift()(); done++; }
+    if(q.length){ toast('Berechne beste Platzierung … '+Math.round(done/tot*100)+' %'); setTimeout(next,0); return; }
+    if(stage===0){ /* Stufe 2: die 2 besten Seiten feiner variieren */
+      stage=1; cand.sort(byScore);
+      cand.slice(0,2).forEach(function(c){ [[13,3],[6,3],[6,12],[20,3],[20,12]].forEach(function(p){ q.push(function(){ ev(c.sd,p[0],p[1],c.oi); }); }); });
+    } else if(stage===1){ /* Stufe 3: die 2 besten genau prüfen (kleine und große Frame-Zeit) */
+      stage=2; cand.sort(byScore);
+      cand.slice(0,2).forEach(function(c){ var o={l:c.l,sp:0,st:3}; fin.push(o); [0.05,0.0167].forEach(function(d){ q.push(function(){ var r=sim(c.l,d); o.sp+=r.pct; if(r.stars<o.st) o.st=r.stars; }); }); });
+    } else {
+      var best=null, bs=-1; fin.forEach(function(o){ var sc=o.st*1000+o.sp/2; if(sc>bs){ bs=sc; best=o; } });
+      autoBest.busy=false;
+      if(best) placePlan(best.l,{stars:best.st,pct:Math.round(best.sp/2)});
+      return;
+    }
+    setTimeout(next,0);
+  }
+  var fin=[];
+  setTimeout(next,30);
 }
 function deploy(px,py){
   if(!bt||bt.over||!bt.sel||bt.tray[bt.sel]<=0) return false;
@@ -1670,6 +1689,7 @@ function showResult(){
     '<div class="res-big">'+ch+'</div>'+
     '<div class="row"><button class="btn go" data-act="home">Heimkehren</button></div>', true);
 }
+var gameSpd=1;
 var freeLook=true; /* erstes Lager kostenlos; wer ein Lager ansieht und ohne Kampf geht, zahlt fürs nächste Suchen */
 function leaveBattle(){
   if(bt&&bt.shown) freeLook=true;
@@ -1908,6 +1928,7 @@ function glyph(b,x,y,w,h){
       rr(cx-w*0.3,cy-h*0.05,w*0.6,h*0.34,u*0.1,'#2a3140'); rr(cx-w*0.22,cy-h*0.28,w*0.44,h*0.2,u*0.06,'#8fa3c4','#3b4a66'); break;
     case 'gemmine': ctx.fillStyle='#5ee0e8'; ctx.strokeStyle='#1d6f77'; ctx.beginPath(); ctx.moveTo(cx,cy-h*0.28); ctx.lineTo(cx+w*0.24,cy); ctx.lineTo(cx,cy+h*0.28); ctx.lineTo(cx-w*0.24,cy); ctx.closePath(); ctx.fill(); ctx.stroke(); break;
     case 'smithy': rr(cx-w*0.3,cy-h*0.1,w*0.6,h*0.16,u*0.05,'#2b2f36'); rr(cx-w*0.14,cy+h*0.04,w*0.28,h*0.2,u*0.05,'#3a3f48'); circ(cx+w*0.25,cy-h*0.25,u*0.1,'#f3a24a'); break;
+    case 'totem': rr(cx-w*0.14,y+h*0.12,w*0.28,h*0.72,u*0.06,'#a86a3a','#4a3420'); rr(x+w*0.2,y+h*0.42,w*0.6,h*0.14,u*0.05,'#f3bb4a'); circ(cx,y+h*0.26,u*0.1,'#1c1c22'); break;
     case 'fence': ctx.fillStyle='#4a3420'; ctx.fillRect(x+w*0.15,y+h*0.25,w*0.12,h*0.5); ctx.fillRect(x+w*0.73,y+h*0.25,w*0.12,h*0.5); ctx.fillRect(x+w*0.1,y+h*0.38,w*0.8,h*0.08); ctx.fillRect(x+w*0.1,y+h*0.55,w*0.8,h*0.08); break;
     case 'cannon':
       circ(cx,cy,w*0.3,'#2b3036','#0b1013',lw);
@@ -2092,6 +2113,9 @@ function bspr(t,era){
           if(era>=3){ R(1,12,10,12,tc2); R(1,12,10,2,'#e4e8ec'); R(12,6,11,18,tl); R(12,6,11,2,'#e4e8ec'); for(i=2;i<22;i+=4) R(14,9+(i%8),2,2,era===4?'#5ef0ff':'#6fb7ff'); R(3,17,3,7,'#2a2a2e'); }
           else { triR(R,6,8,14,7,tc2,tl); R(5,18,3,6,'#3b4a50'); triR(R,17,3,19,8,tc2,tl); R(16,17,3,7,'#3b4a50'); R(17,1,1,3,'#6a4a2a'); R(18,1,3,2,era===1?'#c0392b':'#f3bb4a'); } }
         break;
+      case 'totem': { var ac=era===4?'#5ef0ff':'#f3bb4a', ac2=era===4?'#c7a6ff':'#c0392b';
+        R(3,13,10,3,'#7a7e86'); R(3,13,10,1,'#a4a8b0'); R(6,2,4,11,wood); R(7,0,2,3,ac); R(5,3,6,3,ac); R(6,4,1,1,'#1c1c22'); R(9,4,1,1,'#1c1c22'); R(7,5,2,1,'#1c1c22');
+        R(2,8,4,2,ac2); R(10,8,4,2,ac2); R(6,10,4,2,ac); break; }
       case 'townhall':
         tplBox(R,W,H,P,era,null,null); R(W/2,0,1,4,'#6a4a2a'); R(W/2+1,0,5,3,'#f3bb4a'); R(W/2-2,H-6,5,6,'#3b2a22'); R(W/2-1,H-7,3,1,'#f3bb4a');
         for(x=3;x<W-3;x+=6) R(x,Math.round(H*0.62),2,3,era===4?'#aef4ff':'#f0c860'); break;
@@ -2204,7 +2228,7 @@ function dot(r){ return '<i class="dot '+({gold:'g',wood:'w',stone:'s',iron:'i',
 function fc(n){ n=Math.round(n); if(n<1000) return ''+n; var v=(n/1000).toFixed(1).replace(/\.0$/,''); return (LANG==='en'?v:v.replace('.',','))+'k'; }
 function fk(n){ n=Math.floor(n); return n>=10000?(function(v){ return LANG==='en'?v:v.replace('.',','); })((n/1000).toFixed(n>=100000?0:1))+'k':fmt(n); }
 function f1(n){ var t=(Math.round(n*100)/100).toString(); return (LANG==='en')?t:t.replace('.',','); }
-var tab='eco', TABS={eco:['Wirtschaft',['mine','sawmill','quarry','ironmine','gemmine','storage']],mil:['Militär',['barracks','camp','smithy','tower','cannon','ballista','mage']],fen:['Zäune',['fence']]};
+var tab='eco', TABS={eco:['Wirtschaft',['mine','sawmill','quarry','ironmine','gemmine','storage']],mil:['Militär',['barracks','camp','smithy','tower','cannon','ballista','mage']],fen:['Sonstiges',['totem','fence']]};
 var icoCache={};
 function iconUrl(t){
   var ik=t+':'+eraIdx()+':'+(GFX?1:0); if(icoCache[ik]) return icoCache[ik];
@@ -2294,6 +2318,7 @@ function stats(t,l){
   else if(t==='barracks'){ r.push(['Truppenstärke','×'+f1(1+0.2*(l-1))]); r.push(['Truppen',TKEYS.filter(function(k){return TROOPS[k].need<=l}).length+' Arten']); }
   else if(isDef(t)){ var q=defStats(t,l); r.push(['Schaden',f1(q.dmg)]); r.push(['Wehrkraft',fmt(defPow(t,l))]); }
   else if(t==='smithy') r.push(['Schaden','+'+12*l+' %']);
+  else if(t==='totem'){ r.push(['Produktion','+'+5*l+' %']); r.push(['Lagerplatz','+'+5*l+' %']); }
   else if(t==='townhall') r.push(['Lagerbasis',fmt(2500+l*1000)]);
   return r;
 }
@@ -2343,7 +2368,7 @@ function renderDock(){
     html+='<div class="row">';
     if(!bt.started&&bt.phase==='deploy') html+='<button class="btn" data-act="back">Zurück</button>';
     else if(!bt.started) html+='<button class="btn" data-act="leave">Zurück</button><button class="btn gold" data-act="next"><span>Weiter suchen</span><small>'+fmt(searchCost())+' '+RN.gold+'</small></button>';
-    else html+='<button class="btn danger" data-act="surrender">Aufgeben</button>';
+    else{ html+='<button class="btn danger" data-act="surrender">Aufgeben</button>'; if(!bt.over) html+='<button class="btn'+(gameSpd>1?' go':'')+'" data-act="speed">⏩ 2x</button>'; }
     html+='</div>';
     if(bt.sel){ var tt=TROOPS[bt.sel]; html+='<div class="hint h2">'+tt.n+': '+Math.round(tt.hp*bt.s)+' LP · '+Math.round(tt.dmg*bt.s*bt.dm)+' Schaden · '+tt.d+'</div>'; }
     if(!bt.started) html+='<div class="hint h2">'+(bt.phase==='scout'?'Prüfe das Lager. Tippe Angreifen, dann setzt du Truppen ab.':'Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Zufällig / Beste Platzierung.')+'</div>';
@@ -2543,6 +2568,7 @@ document.addEventListener('click',function(e){
     case 'pick': if(bt&&bt.tray[k]>0){ bt.sel=k; renderDock(); } break;
     case 'engage': if(bt&&!bt.started){ bt.phase='deploy'; bt.prog=''; renderDock(); } break;
     case 'back': if(bt&&!bt.started){ bt.phase='scout'; bt.prog=''; renderDock(); } break;
+    case 'speed': gameSpd=gameSpd>1?1:2; renderDock(); break;
     case 'rand': if(bt&&!bt.started&&bt.phase==='deploy') autoRandom(); break;
     case 'best': if(bt&&!bt.started&&bt.phase==='deploy') autoBest(); break;
     case 'next':
@@ -2606,7 +2632,7 @@ function frame(now){
   if(mode==='home'||mode==='place'){
     S.b.forEach(function(b){ if(PROD[b.type]){ b.store=Math.min(storeCap(b),b.store+rate(b)*dt); } });
   }
-  if(mode==='battle'&&bt) step(dt);
+  if(mode==='battle'&&bt){ step(dt); if(gameSpd>1&&bt&&!bt.over) step(dt); }
   parts.forEach(function(p){ p.t+=dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=3*dt; });
   parts=parts.filter(function(p){return p.t<p.life});
   texts.forEach(function(t){ t.t+=dt; t.y-=0.8*dt; });

@@ -24,7 +24,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 ## Tutorial
 
 ### 1. Goal
-Upgrade the Town Hall to level 10, grow your village, collect stars in attacks, and fend off raids. Then start fresh in a new era (Legacy) and go again, stronger.
+Upgrade the Town Hall to level 10, grow your village, collect stars in attacks, and fend off raids. Then start fresh in a new era (Prestige) and go again, stronger.
 
 You start with a Town Hall, one production building for each of the first two resources, an Army Camp, a Barracks, 8 Clubmen and 2 Looters. A 4-step hint at the bottom guides you through the first minutes (collect, build an Arrow Tower, train troops, attack). Old saves skip it.
 
@@ -40,7 +40,7 @@ You start with a Town Hall, one production building for each of the first two re
 - If storage is full, nothing more fits ("storage full"). Build **Storage** and upgrade the Town Hall. Stone and Iron only use 60 % of the storage space.
 - Storage space = 2,500 + 1,000 per Town Hall level + 2,200 per Storage level (summed over all Storage buildings).
 - Tap a building to see what is waiting in its storage. **Overview** shows the real income per minute for every resource. 
-- Real output per minute at level 1: Gold Mine and Sawmill 32.4, Quarry 21.6, Iron Mine 12.6, Gem Mine 0.14. It grows linearly with the level (+8 % per Legacy *Production* level).
+- Real output per minute at level 1: Gold Mine and Sawmill 32.4, Quarry 21.6, Iron Mine 12.6, Gem Mine 0.14. It grows linearly with the level (+8 % per Prestige *Production* level).
 
 | Building | Produces |
 |---|---|
@@ -141,7 +141,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 
 ### 8. Progress
 - **XP and level:** building, upgrading, attacks, and repelled raids give XP. A level-up gives 3 gems. Reaching level *L* needs 50 · *L* · (*L* − 1) XP in total.
-- Tap the **Town Hall** and then **Progress** to see your level, XP per building, the achievements and the Legacy.
+- Tap the **Town Hall** and then **Progress** to see your level, XP per building, the achievements and Prestige.
 - **XP per building:** 10 × level (Town Hall 40, Storage 12, Barracks and Smithy 15, Fence 2), once for building and once for every upgrade.
 - **Achievements** (Progress menu): one-time gems and XP, e.g. Town Hall level 2/4/6/8/10, 8/20/35 buildings, Gold Mine and Sawmill level 3, 5/25/60 stars, 15 troops, building a Ballista or Wizard Tower, 5 Knights (elite troops), player level 5/10. Ready ones are at the top of the list, claimed ones at the bottom.
 
@@ -152,10 +152,11 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 - Clearing browser data = save gone. Back up the code or the file first.
 - Fallback if the browser blocks localStorage: the save is also kept in the page address (`#…`) and for the current tab only. Bookmark that address or copy the export code.
 - Reset: at the very bottom of the *Trade Gems* tab in the shop (double confirmation).
+- Imported codes and files are validated and repaired (invalid numbers, building levels limited to 1 to 10, broken Prestige data), so a damaged or edited save does not crash the game.
 
-### 10. Legacy (fresh start)
-- Unlocks at Town Hall level 10: **Town Hall → Progress → Legacy → Fresh start** (double confirmation).
-- Village, resources and army reset (you start again with the small starter village). You keep gems, stars, level (XP), achievements and your Legacy bonuses.
+### 10. Prestige (fresh start)
+- Unlocks at Town Hall level 10: **Town Hall → Progress → Prestige → Fresh start** (double confirmation).
+- Village, resources and army reset (you start again with the small starter village). You keep gems, stars, level (XP), achievements and your Prestige bonuses.
 - You earn **Glory**: 20 + 1 per 2 stars + 2 per player level + 1 per achievement + 5 per earlier fresh start. Spend it on permanent bonuses. The price is the base price × (current level + 1).
 
 | Bonus | Per level | Max level | Base price (Glory) |
@@ -172,7 +173,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 - Each fresh start raises the **world level**: raids +20 %, enemy camps +15 % health, loot +30 % (each on top of a further +10 % for raids and camps).
 
 ## Eras
-The game starts in the Stone Age. Every Legacy fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era.
+The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era.
 
 | Era | Gold / Wood / Stone / Iron slot | Mine / Sawmill / Quarry / Iron Mine slot | Smithy |
 |---|---|---|---|
@@ -194,7 +195,7 @@ Troops get new names and their own pixel models per era too, e.g. Clubman → So
 | Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Legacy bonuses in `LEG`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
