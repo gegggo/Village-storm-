@@ -94,13 +94,23 @@ Building limit by Town Hall level:
 | Knight | 3 | 140 Gold, 60 Wood, 40 Iron | Armored and fast, needs Barracks level 5 |
 | Looter | 1 | 35 Gold | Fast, hunts resource buildings first |
 
+**Special abilities** (shown in the Army menu, also counted by the *Best placement* forecast):
+
+| Troop | Ability |
+|---|---|
+| Clubman | Frenzy: below 40 % health, +40 % damage |
+| Archer | Volley: every 5th shot deals double damage |
+| Brute | Stomp: every 4th hit also damages nearby buildings for half damage |
+| Knight | Charge: the first hit deals double damage |
+| Looter | Dodge: every 3rd hit from a defense misses |
+
 - **Barracks:** the highest level counts. Troop strength (health and damage) is ×(1 + 0.2 per level above 1).
 - **Smithy:** the highest level counts. +12 % damage per level for all troops.
 - The Army menu and the Overview show the current strength values.
 - Troops get new names and their own pixel models in every era (see Eras). Their stats stay the same.
 
 ### 6. Attacking
-1. Tap **⚔ Attack** in the bottom dock (you need at least one troop). The first camp is free. If you leave a camp without fighting, opening the next one from the **⚔ Attack** tab costs the same as **Search next** (until you finish a battle). The camp view shows the buildings, cannons, towers, the defense damage per second, the possible loot and gems. Red circles show the range of the defenses. Buttons: "Back", "Search next" (costs gold: 20 per Town Hall level plus 2 % of your storage space, so hoarding makes searching more expensive), "⚔ Attack". Tapping the field does not deploy anything yet.
+1. Tap **⚔ Attack** in the bottom dock (you need at least one troop). The first camp is free. If you leave a camp without fighting, **⚔ Attack** reopens the same camp for free. Only **Search next** costs gold. The camp view shows the buildings, cannons, towers, the defense damage per second, the possible loot and gems. Red circles show the range of the defenses. Buttons: "Back", "Search next" (costs gold: 20 per Town Hall level plus 2 % of your storage space, so hoarding makes searching more expensive), "⚔ Attack". Tapping the field does not deploy anything yet.
    Camp strength follows your progress within the current Town Hall level: the bigger your army and the further your buildings are upgraded, the harder the camps get (and the more loot they hold). With the same Town Hall, a small army meets weaker camps, usually one level lower, with up to 30 % less health.
    Camps are built tougher than your own village: more Cannons (3 to 11) and Arrow Towers (3 to 13) from Town Hall 4 on, Ballistas from Town Hall 3, Wizard Towers from Town Hall 5, +30 % health and +25 % defense damage. The Town Hall and most defenses sit behind **walls** (see *Enemy camp walls*).
    **Easier camps at Town Hall 1 to 3 (every era):** Cannons 1 / 2 / 2, Arrow Towers 1 / 2 / 3, building health and defense damage ×0.4 / ×0.55 / ×0.7, at most 2 Mines and 2 Sawmills.
@@ -154,6 +164,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 - Clearing browser data = save gone. Back up the code or the file first.
 - Fallback if the browser blocks localStorage: the save is also kept in the page address (`#…`) and for the current tab only. Bookmark that address or copy the export code.
 - Reset: at the very bottom of the *Trade Gems* tab in the shop (double confirmation).
+- The save also holds play time, statistics and the daily bonus streak.
 - Imported codes and files are validated and repaired (invalid numbers, building levels limited to 1 to 10, broken Prestige data), so a damaged or edited save does not crash the game.
 
 ### 10. Prestige (fresh start)
@@ -174,8 +185,19 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 
 - Each fresh start raises the **world level**: raids +20 %, enemy camps +15 % health, loot +30 % (each on top of a further +10 % for raids and camps).
 
+### 11. Daily bonus, statistics and settings
+- **Daily bonus:** the first time you open the game each day (after the tutorial) a window offers a reward. Claiming on consecutive days builds a **7-day streak**; missing a day starts again at day 1. The reward is calculated when the window opens: 120 × Town Hall level × (1 + 0.25 × (streak day − 1)) Gold and Wood, half of that in Stone, Iron from day 3 on (20 %), and Gems on day 3 (2), day 5 (1) and day 7 (5). A higher Town Hall level on the next day means a bigger bonus. Streak and last claim are part of the save and survive a fresh start.
+- **Play time:** the Overview shows your total play time. It only counts while the page is visible (not in the background, not while offline) and survives fresh starts. Saves from before this feature start at zero.
+- **Statistics (Overview):** attacks, wins, three-star wins, defeats, raids repelled, buildings destroyed, troops lost, total loot per resource, fresh starts, buildings in the village and the bonus streak. Attack numbers are saved with the game and survive a fresh start.
+- **Settings (Overview):**
+  - **Sound** on/off. Short effects for collecting, building, upgrading, deploying troops, destroyed buildings, victory, defeat, the daily bonus and a new era. The sounds are synthesized in the browser, there are no audio files. Browsers only allow sound after your first tap.
+  - **Day and night** on/off. The tint follows the clock of your device (dawn, day, dusk, night, softer in the Future era) and applies to the village and to enemy camps. Troops, health bars and projectiles stay untinted so fights stay readable.
+  Both choices are saved on the device.
+
 ## Eras
-The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige).
+The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige). A fresh start plays a short full-screen transition with the era's symbol and name.
+
+Buildings come alive per era (graphics on, see the ✨ button): smoke from chimneys in the Industrial Age, fire at the Cave Camp, forges and army camps in the Stone and Middle Ages, blinking lights in the Modern Age and pulsing glows in the Future.
 
 | Era | Gold / Wood / Stone / Iron slot | Mine / Sawmill / Quarry / Iron Mine slot | Smithy |
 |---|---|---|---|
@@ -197,7 +219,7 @@ Troops get new names and their own pixel models per era too, e.g. Clubman → So
 | Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), building animations in the table `ANI`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
