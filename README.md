@@ -13,7 +13,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 - 🔔 opens the **Raids** list (with a badge for unread raids).
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
-- **Bottom dock:** the tabs *Economy*, *Military*, *Fences* with the building cards, and the **⚔ Attack** tab.
+- **Bottom dock:** the tabs *Economy*, *Military*, *Other* (Resource Totem, Fences) with the building cards, and the **⚔ Attack** tab.
 - **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras. During a battle the **⏩ 2x** button sits top left of the field.
 
 ## Getting started
@@ -26,7 +26,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 ### 1. Goal
 Upgrade the Town Hall to level 10, grow your village, collect stars in attacks, and fend off raids. Then start fresh in a new era (Prestige) and go again, stronger.
 
-You start with a Town Hall, one production building for each of the first two resources, an Army Camp, a Barracks, 8 Clubmen and 2 Looters. A 4-step hint at the bottom guides you through the first minutes (collect, build an Arrow Tower, train troops, attack). Old saves skip it.
+You start with a Town Hall, one production building for each of the first two resources, an Army Camp, a Barracks, 8 Clubmen and 2 Looters. A 10-step hint at the bottom guides you through the first minutes (see *Guided tutorial* below). Old saves skip it.
 
 ### 2. Top bar: resources
 - **Gold, Iron, Wood, Stone, Gems.** A bar under each value shows how full your storage is. The small number shows the maximum. Tap a value (or **+**) to open the shop.
@@ -38,9 +38,9 @@ You start with a Town Hall, one production building for each of the first two re
 - A production building's storage is full after about 20 minutes at every level (+5 minutes per fresh start, at most 40), so collect regularly.
 - Tap the **bubble** above a building to collect. The "Collect" button takes everything at once.
 - If storage is full, nothing more fits ("storage full"). Build **Storage** and upgrade the Town Hall. Stone and Iron only use 60 % of the storage space.
-- Storage space = 2,500 + 1,000 per Town Hall level + 2,200 per Storage level (summed over all Storage buildings).
+- Storage space = 2,500 + 1,000 per Town Hall level + 2,200 per Storage level (summed over all Storage buildings), then × (1 + 0.05 per Resource Totem level) and the Prestige *Storage* bonus.
 - Tap a building to see what is waiting in its storage. **Overview** shows the real income per minute for every resource. 
-- Real output per minute at level 1: Gold Mine and Sawmill 32.4, Quarry 21.6, Iron Mine 12.6, Gem Mine 0.14. It grows linearly with the level (+8 % per Prestige *Production* level).
+- Real output per minute at level 1: Gold Mine and Sawmill 32.4, Quarry 21.6, Iron Mine 12.6, Gem Mine 0.14. It grows linearly with the level (+8 % per Prestige *Production* level, +5 % per Resource Totem level).
 
 | Building | Produces |
 |---|---|
@@ -50,17 +50,19 @@ You start with a Town Hall, one production building for each of the first two re
 | Iron Mine | Iron |
 | Gem Mine | Gems (slowly). Costs 10 gems to build. Upgrades cost gems too (about 11 for level 2, 275 for level 10). |
 | Storage | More storage space |
+| Resource Totem | No output of its own: +5 % production and +5 % storage space per level for all resources (see Building) |
 
 (Names change with the era, see Eras.)
 
 ### 4. Building
-- Pick a tab in the bottom dock (*Economy*, *Military*, *Fences*), tap a building card, move the building on the village, then **✔ Save** (or **↶ Undo**). The **Gems** button in the side bar opens the full shop, with the same list plus more.
+- Pick a tab in the bottom dock (*Economy*, *Military*, *Other*), tap a building card, move the building on the village, then **✔ Save** (or **↶ Undo**). The **Gems** button in the side bar opens the full shop, with the same list plus more.
 - Every building has a limit that grows with the **Town Hall level** (table below). Locked buildings show the Town Hall level at which they unlock.
 - New buildings get more expensive with each additional one of the same type (+55 % per building already owned). Fences always cost the same.
 - Tap a building: upgrade, move (**Move**), or **Demolish** (no refund; if you lose Army Camp space, surplus troops are dismissed).
 - **Upgrading:** levels 1 to 10, the price grows with the level. A building can never be higher than the Town Hall, so upgrade the **Town Hall** first. The Town Hall panel also shows what the next level unlocks.
 - **Town Hall costs vs. storage:** every Town Hall level can be paid for with a fully built and upgraded storage (Storage gives 2,200 space per level).
-- **Fences:** in the Fences tab, cheap, placed instantly by tapping or dragging with your finger. They cannot be upgraded.
+- **Fences:** in the *Other* tab, cheap (15 Wood each, the price never rises), placed instantly by tapping or dragging with your finger. They cannot be upgraded. Fences along the sides of buildings raise your defense and protect your loot against raids (see *Raids*).
+- **Resource Totem:** also in the *Other* tab, 2×2, one per village. Its highest level adds +5 % production and +5 % storage space per level. Building it costs 250 Gold, 200 Wood and 140 Stone, an upgrade costs half of the Town Hall upgrade of the same level. Gives 20 XP.
 - **Shop tabs:** *Build*, *Upgrades* (all upgradable buildings in one list, upgrade directly) and *Trade Gems* (also holds the reset button at the very bottom).
 - **Fill with gems:** if a building or upgrade is only missing some resources, a button "Fill with gems" shows the gem price and buys exactly the missing amount.
 
@@ -72,14 +74,15 @@ Building limit by Town Hall level:
 | Storage / Quarry | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 4 | 5 | 5 |
 | Iron Mine | – | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 4 | 5 |
 | Gem Mine | – | – | 1 | 1 | 2 | 2 | 3 | 3 | 3 | 4 |
-| Barracks | 1 | 1 | 2 | 2 | 3 | 3 | 3 | 4 | 4 | 4 |
+| Barracks | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | Army Camp | 1 | 2 | 2 | 3 | 3 | 4 | 5 | 5 | 6 | 6 |
-| Smithy | – | 1 | 1 | 1 | 1 | 1 | 2 | 2 | 2 | 2 |
+| Smithy | – | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| Resource Totem | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | Arrow Tower | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | Cannon | – | 1 | 1 | 2 | 2 | 3 | 3 | 4 | 4 | 5 |
 | Ballista | – | – | – | 1 | 1 | 2 | 2 | 3 | 3 | 4 |
 | Wizard Tower | – | – | – | – | – | 1 | 1 | 2 | 2 | 3 |
-| Fence | 8 | 12 | 16 | 20 | 24 | 30 | 34 | 38 | 42 | 50 |
+| Fence | 12 | 18 | 24 | 30 | 36 | 44 | 50 | 58 | 64 | 75 |
 
 ### 5. Army
 - Required: **Barracks** (troops, strength) and **Army Camp** (slots, 12 + 6 per level for each camp).
@@ -137,13 +140,18 @@ Abilities show in battle: a red aura and "Rage!" for the Clubman, a golden arrow
 - The blocked deployment zone also covers wall fields.
 
 ### 7. Raids (defense)
-- Roughly every 2 hours a raid can hit **your** village, even while you are offline (at most 4 stack up). Each raid only happens with a 90 % chance.
-- Your **defense power** comes from Arrow Towers, Cannons, Ballistas, Wizard Towers (stronger with level), troops in the army, and fences (a little each).
+- Roughly every 2 hours a raid can hit **your** village, even while you are offline. After a long break at most 2 raids are played out (with their real times); a raid that would land too close to the previous one is skipped. Each raid only happens with a 90 % chance.
+- **Beginner protection:** in a new game (and after a fresh start) the first raid comes after about 4 hours. At Town Hall 1 to 2 a raid takes at most 10 % of your resources.
+- Your **defense power** comes from Arrow Towers, Cannons, Ballistas, Wizard Towers (stronger with level), the troops in your army, and **fence protection** (see below).
 - Defense power ≥ attack: **repelled**, +10 XP (+25 XP if it was a close call, i.e. the attack was at least 70 % of your defense).
-- Otherwise the enemy plunders 8 to 40 % of your resources (the weaker your defense, the more) and part of the stored production.
-- Raid strength rises with your Town Hall level (and with every fresh start) and is rolled between ×0.8 and ×1.6 of its base value for every raid. Grow your defense along with it.
-- The **🔔 Raids** button shows your defense power and the last 10 raids (when, defense vs. attack, loot lost). A badge counts unread raids. After you were away, a message sums up what happened.
-- Tip: before a long break, spend resources, keep your army, and build towers and cannons.
+- Otherwise the enemy plunders 5 to 30 % of your resources (the weaker your defense, the more) and part of the stored production.
+- **Fence protection:** fences along the four sides of a building (corners do not count) cover it. Per building the covered share of its sides counts.
+  - **Defense:** the Town Hall counts 40 %, all other buildings together 60 % (defenses count double). Full cover gives up to **+35 %** defense power.
+  - **Loot:** the cover of your Storage and production buildings reduces the plundered share by up to **45 %**.
+  - Neighboring buildings can share fences, so a compact village is easier to protect.
+- Raid strength is 175 × Town Hall level^2.05, ×1.2 and ×1.1 for every fresh start, and is rolled between ×0.85 and ×1.35 for every raid. Grow your defense along with it.
+- The **🔔 Raids** button shows your defense power, your fence cover and the last 10 raids (when, defense vs. attack, loot lost). A badge counts unread raids. After you were away, a message sums up what happened.
+- Tip: before a long break, spend resources, keep your army, build towers and cannons, and fence in the Town Hall and your Storage.
 
 | Defense | Trait |
 |---|---|
@@ -157,7 +165,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 ### 8. Progress
 - **XP and level:** building, upgrading, attacks, and repelled raids give XP. A level-up gives 3 gems. Reaching level *L* needs 50 · *L* · (*L* − 1) XP in total.
 - Tap the **Town Hall** and then **Progress** to see your level, XP per building, the achievements and Prestige.
-- **XP per building:** 10 × level (Town Hall 40, Storage 12, Barracks and Smithy 15, Fence 2), once for building and once for every upgrade.
+- **XP per building:** 10 × level (Town Hall 40, Resource Totem 20, Storage 12, Barracks and Smithy 15, Fence 2), once for building and once for every upgrade.
 - **Achievements** (Progress menu): one-time gems and XP, e.g. Town Hall level 2/4/6/8/10, 8/20/35 buildings, Gold Mine and Sawmill level 3, 5/25/60 stars, 15 troops, building a Ballista or Wizard Tower, 5 Knights (elite troops), player level 5/10. Ready ones are at the top of the list, claimed ones at the bottom.
 
 ### 9. Saving
@@ -199,6 +207,22 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
   - **Weather** on/off (graphics must be on). Each era has its own weather that comes and goes: dust wind in the Stone Age, fog in the Middle Ages, smog and soot in the Industrial Age, rain in the Modern Age and data rain in the Future. Purely visual.
   All three choices are saved on the device.
 
+### Guided tutorial (10 steps)
+A hint line above the dock names the current step and the matching button pulses. A step is done when you do it. Old saves skip the tutorial.
+
+| Step | Task |
+|---|---|
+| 1/10 | Tap the bubbles above your buildings (collect) |
+| 2/10 | Build an Arrow Tower (*Military* tab) |
+| 3/10 | Open the Army and train troops |
+| 4/10 | Tap **⚔ Attack**, scout a camp and attack |
+| 5/10 | Build 3 fences around the Town Hall and Storage (*Other* tab) |
+| 6/10 | Open the **Raids** button and check your defense power |
+| 7/10 | Upgrade a building (tap it, then *Upgrade*) |
+| 8/10 | Build a Smithy (*Military* tab) |
+| 9/10 | Open **Gems** in the side bar and the *Upgrades* tab |
+| 10/10 | Tap the Town Hall and open **Progress** |
+
 ## Eras
 The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige). A fresh start plays a short full-screen transition with the era's symbol and name.
 
@@ -224,11 +248,11 @@ Troops get new names and their own pixel models per era too, e.g. Clubman → So
 | Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), daily tasks in `DQT`, `dqAdd` and `dqClaim`, building animations in the table `ANI`, weather in `drawWeather`, ability effects in `fxText`, `fxRing` and `shakeT`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, fence protection in `wallCover` (used by `villageDef` and `runRaid`), the tutorial steps in `TXT` (`tut0` to `tut9`), `tutMark` and `tutAt`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), daily tasks in `DQT`, `dqAdd` and `dqClaim`, building animations in the table `ANI`, weather in `drawWeather`, ability effects in `fxText`, `fxRing` and `shakeT`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
-2. Build 2 to 3 Arrow Towers (Military tab).
+2. Build 2 to 3 Arrow Towers (Military tab) and a few fences around the Town Hall and Storage (Other tab).
 3. Upgrade Storage and the Town Hall. Build more mines and sawmills as the limit grows.
 4. Train an army (Army in the side bar), attack your first camp.
 5. Collect stars, unlock Cannons, Ballista and Wizard Tower, claim achievements.
