@@ -299,6 +299,7 @@ img.ic,.card img{pointer-events:none}
 .ic-tent{--m:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M2 20L12 4l10 16zM12 20l-3-6h6z%22 fill=%22%23000%22/%3E%3C/svg%3E")}
 .ic-hammer{--m:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M13 3l8 6-3 3-3-2-9 9-3-3 9-9-3-3z%22 fill=%22%23000%22/%3E%3C/svg%3E")}
 .ic-undo{--m:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M9 14L4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3%22/%3E%3C/svg%3E")}
+.item .act{min-width:0}
 </style>
 </head>
 <body>
@@ -2903,7 +2904,7 @@ function dqHtml(){
   var D=dqEnsure(), rw=dqReward(), h='<div class="muted" style="margin:12px 0 4px">'+tr('Tägliche Aufgaben')+'</div>';
   D.q.forEach(function(q,i){
     var pc=Math.round(100*q.p/q.n);
-    h+='<div class="item" style="margin-bottom:6px"><div class="nm" style="font-size:14px">'+tx('dq_'+q.k,{n:q.n})+'</div><div style="height:6px;border-radius:3px;background:#0b1213;margin:6px 0"><div style="height:100%;width:'+pc+'%;border-radius:3px;background:'+(q.done?'#59d18a':'#f3bb4a')+'"></div></div><div class="act"><span class="muted">'+q.p+' / '+q.n+' · '+fc(rw.gold)+' '+RN.gold+' · '+fc(rw.wood)+' '+RN.wood+' · '+rw.gems+' '+RN.gems+'</span>'+(q.cl?'<span class="muted">✓</span>':'<button class="mini" data-act="dqClaim" data-k="'+i+'"'+(q.done?'':' disabled')+'>'+tr('Abholen')+'</button>')+'</div></div>';
+    h+='<div class="item" style="margin-bottom:6px;display:block"><div class="nm" style="font-size:14px;hyphens:none;-webkit-hyphens:none;overflow-wrap:normal">'+tx('dq_'+q.k,{n:q.n})+'</div><div style="height:6px;border-radius:3px;background:#0b1213;margin:6px 0"><div style="height:100%;width:'+pc+'%;border-radius:3px;background:'+(q.done?'#59d18a':'#f3bb4a')+'"></div></div><div class="act" style="justify-content:space-between;gap:8px"><span class="muted" style="font-size:12px">'+q.p+' / '+q.n+' · '+fc(rw.gold)+' '+RN.gold+' · '+fc(rw.wood)+' '+RN.wood+' · '+rw.gems+' '+RN.gems+'</span>'+(q.cl?'<span class="muted">✓</span>':'<button class="mini" data-act="dqClaim" data-k="'+i+'"'+(q.done?'':' disabled')+'>'+tr('Abholen')+'</button>')+'</div></div>';
   });
   return h+'<div class="muted" style="font-size:12px">'+tr('Alle drei erledigt: +3 Gems Bonus')+(D.b?' ✓':'')+'</div>';
 }
