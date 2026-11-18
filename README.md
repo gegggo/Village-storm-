@@ -14,7 +14,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
 - **Bottom dock:** the tabs *Economy*, *Military*, *Other* (Resource Totem, Fences) with the building cards, and the **⚔ Attack** tab.
-- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras. During a battle the **⏩ 2x** button sits top left of the field.
+- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras. During a battle the **⏩ 2x** button sits top left of the field (unlocked from Prestige 2).
 
 ## Getting started
 - Online: GitHub Pages (Settings → Pages → Branch `main`).
@@ -26,7 +26,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 ### 1. Goal
 Upgrade the Town Hall to level 10, grow your village, collect stars in attacks, and fend off raids. Then start fresh in a new era (Prestige) and go again, stronger.
 
-You start with a Town Hall, one production building for each of the first two resources, an Army Camp, a Barracks, 8 Clubmen and 2 Looters. A 10-step hint at the bottom guides you through the first minutes (see *Guided tutorial* below). Old saves skip it.
+You start with a Town Hall, one production building for each of the first two resources, an Army Camp, a Barracks, 8 Clubmen and 2 Looters, plus 3,000 Gold, 2,400 Wood, 1,500 Stone and 600 Iron: enough to do every tutorial step right away (Arrow Tower, fences, Town Hall upgrade, Smithy, troops). After a Prestige fresh start the village begins with the smaller basic amount again. A 10-step hint at the bottom guides you through the first minutes (see *Guided tutorial* below). Old saves skip it.
 
 ### 2. Top bar: resources
 - **Gold, Iron, Wood, Stone, Gems.** A bar under each value shows how full your storage is. The small number shows the maximum. Tap a value (or **+**) to open the shop.
@@ -121,12 +121,12 @@ Abilities show in battle: a red aura and "Rage!" for the Clubman, a golden arrow
    **Easier camps below Barracks level 5:** until you can train the strongest troop (Knight, Barracks level 5), camps get fewer defenses (about 32 % fewer at Barracks 1, 8 % fewer at Barracks 4), up to 45 % less health and defense damage (Barracks 1 -35 %, 2 -25 %, 3 -15 %, 4 -5 %), and one camp level lower below Barracks 4.
    **Easier camps at Town Hall 1 to 3 (every era):** Cannons 1 / 2 / 2, Arrow Towers 1 / 2 / 3, building health and defense damage ×0.4 / ×0.55 / ×0.7, at most 2 Mines and 2 Sawmills.
 2. Press **⚔ Attack**. The troop bar appears. Deploy each troop individually by tapping or dragging anywhere on the field outside the blocked red zone around the camp's buildings. "Back" returns to the camp view.
-3. **Auto placement** (two buttons):
-   - **🎲 Random:** deploys the army on a random side.
-   - **★ Best placement:** simulates 48 variants in advance and picks the best.
-4. Both show a **forecast** at the bottom, e.g. "★☆☆ · 35 % destroyed · Victory". Victory from 1 star. The forecast is only an estimate (coarser time steps than the real battle). Calculation takes a few seconds. There is no forecast for troops you place yourself.
+3. **Auto placement** (unlocked by Prestige):
+   - **Before the first Prestige (Stone Age):** only **🎲 Random** (deploys the army on a random side). **★ Best placement** is shown locked ("from Prestige 1").
+   - **From Prestige 1:** **★ Best placement** simulates 48 variants in advance and picks the best. The Random button is gone.
+4. Both auto placements show a **forecast** at the bottom, e.g. "★☆☆ · 35 % destroyed · Victory". Victory from 1 star. The forecast is only an estimate (coarser time steps than the real battle). Calculation takes a few seconds. There is no forecast for troops you place yourself.
 5. Troops fight on their own. You have 3 minutes. The battle starts with your first deployed troop. Destroy as much as possible, above all the camp's **Town Hall**.
-   **⏩ 2x** (top left of the field, only during a battle) doubles the battle speed; tap again for normal speed.
+   **⏩ 2x** (top left of the field, only during a battle, **unlocked from Prestige 2**) doubles the battle speed; tap again for normal speed.
 6. Up to 3 **stars**: 1 for 50 % destroyed, 1 for the Town Hall, 1 for 100 %. Loot is proportional to the destroyed share (and only fits as far as your storage allows). Gems depend on the stars and the camp's level, none for zero stars. Each star gives 15 XP.
 7. Troops that survive come home. Lost troops must be trained again. During the battle the bar shows how many troops have **fallen** so far (split by type). Before the battle it shows your gold and the cost of the next search.
 8. **Give up** ends a running battle early. Loot and stars so far still count. **Return home** after the result brings you back to the village.
@@ -171,7 +171,7 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 ### 9. Saving
 - Automatically every few seconds and when you leave the page.
 - **Export code:** Overview → *Create code*, copy it. Paste it on another device and tap *Load*. The code is compressed.
-- **Backup file:** Overview → save to a file (.txt) and load it again later. The game reminds you if there has been no backup for over 24 hours.
+- **Backup file:** Overview → *Save file* always writes the same file, `dorfsturm-backup.txt`, so the old backup is replaced instead of piling up. Chrome, Edge and Android Chrome ask once where to keep it and then overwrite that file directly. On iPhone the share sheet opens: choose *Save to Files* and confirm *Replace*. Other browsers download the file with the same name (the browser may add a number if the old one is still in the download folder). Load it again later with *Load file*. The game reminds you if there has been no backup for over 24 hours.
 - Clearing browser data = save gone. Back up the code or the file first.
 - Fallback if the browser blocks localStorage: the save is also kept in the page address (`#…`) and for the current tab only. Bookmark that address or copy the export code.
 - Reset: at the very bottom of the *Trade Gems* tab in the shop (double confirmation).
@@ -198,17 +198,17 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 
 ### 11. Daily bonus, statistics and settings
 - **Daily bonus:** the first time you open the game each day (after the tutorial) a window offers a reward. Claiming on consecutive days builds a **7-day streak**; missing a day starts again at day 1. The reward is calculated when the window opens: 120 × Town Hall level × (1 + 0.25 × (streak day − 1)) Gold and Wood, half of that in Stone, Iron from day 3 on (20 %), and Gems on day 3 (2), day 5 (1) and day 7 (5). A higher Town Hall level on the next day means a bigger bonus. Streak and last claim are part of the save and survive a fresh start.
-- **Daily tasks (Overview):** every day brings 3 new tasks, the same for the whole day, picked from: collect resources, win attacks, earn stars, train troops, build or upgrade buildings, destroy buildings in attacks. Progress counts automatically and a toast announces a finished task. Each finished task is claimed with its own button (150 × Town Hall level of the first resource, 100 × Town Hall level of the second, 1 gem). Claiming all three gives **+3 gems** on top. Tasks and progress are saved and survive a fresh start.
+- **Daily tasks (Overview):** every day brings 3 new tasks, the same for the whole day, picked from: collect resources, win attacks, earn stars, train troops, build or upgrade buildings, destroy buildings in attacks. Progress counts automatically and a toast announces a finished task. Each finished task is claimed with its own button. The reward grows with your progress: Gold = the larger of 150 × Town Hall level and 2 % of your Gold storage space, Wood = the larger of 100 × Town Hall level and 2 % of your Wood storage space, both × (1 + 0.35 per Prestige), rounded to 10; Gems = 1 + Town Hall level ÷ 4 (rounded down) + Prestige, at most 6. Claiming all three gives **+3 gems** on top, plus 1 per Prestige (at most 8). Tasks and progress are saved and survive a fresh start.
 - **Play time:** the Overview shows your total play time. It only counts while the page is visible (not in the background, not while offline) and survives fresh starts. Saves from before this feature start at zero.
 - **Statistics (Overview):** attacks, wins, three-star wins, defeats, raids repelled, buildings destroyed, troops lost, total loot per resource, fresh starts, buildings in the village and the bonus streak. Attack numbers are saved with the game and survive a fresh start.
 - **Settings (Overview):**
   - **Sound** on/off. Short effects for collecting, building, upgrading, deploying troops, destroyed buildings, victory, defeat, the daily bonus and a new era. The sounds are synthesized in the browser, there are no audio files. Browsers only allow sound after your first tap.
-  - **Day and night** on/off. The tint follows the clock of your device (dawn, day, dusk, night, softer in the Future era) and applies to the village and to enemy camps. Troops, health bars and projectiles stay untinted so fights stay readable.
+  - **Day and night** on/off. The tint follows the clock of your device (dawn, day, dusk, night, softer in the Future era) and applies to the whole map area: the village, enemy camps and the border outside the field. Troops, health bars and projectiles stay untinted so fights stay readable.
   - **Weather** on/off (graphics must be on). Each era has its own weather that comes and goes: dust wind in the Stone Age, fog in the Middle Ages, smog and soot in the Industrial Age, rain in the Modern Age and data rain in the Future. Purely visual.
   All three choices are saved on the device.
 
 ### Guided tutorial (10 steps)
-A hint line above the dock names the current step and the matching button pulses. A step is done when you do it. Old saves skip the tutorial.
+A hint line above the dock names the current step (it stays pinned at the top of the dock) and the matching button pulses. On the map the target glows in gold too: the bubbles to collect (step 1), the Town Hall and Storage for the fences (step 5), the building to upgrade (step 7, the Town Hall if you can afford it) and the Town Hall for Progress (step 10). The Smithy needs Town Hall level 2: until then step 8 points you to the Town Hall upgrade. A step is done when you do it. Old saves skip the tutorial.
 
 | Step | Task |
 |---|---|

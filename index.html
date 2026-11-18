@@ -91,7 +91,7 @@ body{
 .cost span{display:inline-flex;align-items:center;gap:4px}
 .cost .no{color:var(--danger)}
 .hint{color:var(--muted);font-size:12.5px;text-align:center}
-.hint.tut{color:#fff;font-weight:700;font-size:14px;line-height:1.35;background:linear-gradient(180deg,#4a3a12,#2e2410);border:2px solid #f3bb4a;border-radius:12px;padding:9px 10px;animation:tutGlow 1.4s ease-in-out infinite}
+.hint.tut{position:sticky;top:0;z-index:8;color:#fff;font-weight:700;font-size:14px;line-height:1.35;background:linear-gradient(180deg,#4a3a12,#2e2410);border:2px solid #f3bb4a;border-radius:12px;padding:9px 10px;animation:tutGlow 1.4s ease-in-out infinite}
 .tutpulse{position:relative!important;outline:3px solid #f3bb4a!important;outline-offset:2px;border-radius:12px;z-index:6;animation:tutGlow 1.2s ease-in-out infinite}
 @keyframes tutGlow{0%,100%{box-shadow:0 0 0 0 #f3bb4a00,0 0 8px 1px #f3bb4a88}50%{box-shadow:0 0 0 4px #f3bb4a33,0 0 22px 6px #f3bb4acc}}
 @media (prefers-reduced-motion:reduce){.hint.tut,.tutpulse{animation:none!important}}
@@ -698,6 +698,10 @@ Aufgeben|Give up|Rendirse|Abandonner
  Schaden · | damage · | de daño · | dégâts · 
 Prüfe das Lager. Tippe Angreifen, dann setzt du Truppen ab.|Inspect the camp. Tap Attack, then deploy your troops.|Examina el campamento. Toca Atacar y despliega tus tropas.|Inspecte le camp. Touche Attaquer, puis déploie tes troupes.
 Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Zufällig / Beste Platzierung.|Tap or drag onto the field. Red zone is blocked. Or use Random / Best placement.|Toca o arrastra al campo. La zona roja está bloqueada. O usa Aleatorio / Mejor colocación.|Touche ou glisse sur le terrain. La zone rouge est bloquée. Ou utilise Aléatoire / Meilleur placement.
+Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Beste Platzierung.|Tap or drag onto the field. Red zone is blocked. Or use Best placement.|Toca o arrastra al campo. La zona roja está bloqueada. O usa Mejor colocación.|Touche ou glisse sur le terrain. La zone rouge est bloquée. Ou utilise Meilleur placement.
+Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Zufällig.|Tap or drag onto the field. Red zone is blocked. Or use Random.|Toca o arrastra al campo. La zona roja está bloqueada. O usa Aleatorio.|Touche ou glisse sur le terrain. La zone rouge est bloquée. Ou utilise Aléatoire.
+ab Prestige 1|from Prestige 1|desde Prestigio 1|dès Prestige 1
+Backup aktualisiert|Backup updated|Copia actualizada|Sauvegarde mise à jour
 Schließen|Close|Cerrar|Fermer
  gebaut| built| construidos| construits
 Tauschen|Trade|Cambiar|Échanger
@@ -786,6 +790,7 @@ function tr(s){
 /* Feste Schlüssel: tx('key',{res:RN.gold}). Reihenfolge de|en|es|fr, {x} = Platzhalter. Neue Texte hier eintragen, nicht in I18N. */
 var TXT={
  dq_collect:['Sammle {n}x Rohstoffe ein','Collect resources {n} times','Recoge recursos {n} veces','Récolte des ressources {n} fois'],
+ dqall:['Alle drei erledigt: +{n} Gems Bonus','All three done: +{n} gems bonus','Las tres hechas: +{n} gemas de bono','Les trois faites : +{n} gemmes de bonus'],
  dq_win:['Angriffe gewinnen: {n}','Win attacks: {n}','Ataques ganados: {n}','Attaques gagnées : {n}'],
  dq_stars:['Hole {n} Sterne im Angriff','Earn {n} stars in attacks','Consigue {n} estrellas en ataques','Obtiens {n} étoiles en attaque'],
  dq_train:['Trainiere {n} Truppen','Train {n} troops','Entrena {n} tropas','Entraîne {n} troupes'],
@@ -800,7 +805,7 @@ var TXT={
  tut4:['Schritt 5/10 · Setze Zäune um Rathaus und Lager: Tab Sonstiges, dann über die Gebäudeseiten ziehen. Das erhöht deine Wehr gegen Überfälle.','Step 5/10 · Fence in your Town Hall and storage: Other tab, then drag along the building sides. This raises your defense against raids.','Paso 5/10 · Cerca el Ayuntamiento y el almacén: pestaña Otros y arrastra junto a los lados de los edificios. Aumenta tu defensa contra incursiones.','Étape 5/10 · Entoure l\'Hôtel de ville et le stockage de clôtures : onglet Autres, puis glisse le long des côtés des bâtiments. Cela renforce ta défense contre les raids.'],
  tut5:['Schritt 6/10 · Tippe oben im Spielfeld auf den Überfälle-Knopf und prüfe deine Wehrkraft.','Step 6/10 · Tap the Raids button at the top of the field and check your defense power.','Paso 6/10 · Toca el botón de Incursiones arriba en el campo y revisa tu fuerza defensiva.','Étape 6/10 · Touche le bouton Raids en haut du terrain et vérifie ta puissance défensive.'],
  tut6:['Schritt 7/10 · Tippe ein Gebäude an und wähle Ausbauen. Höhere Stufen bringen mehr Ertrag und Kraft.','Step 7/10 · Tap a building and choose Upgrade. Higher levels give more output and power.','Paso 7/10 · Toca un edificio y elige Mejorar. Más nivel da más producción y fuerza.','Étape 7/10 · Touche un bâtiment et choisis Améliorer. Un niveau plus haut donne plus de production et de force.'],
- tut7:['Schritt 8/10 · Baue eine Schmiede: Tab Militär, dann Schmiede. Sie gibt allen Truppen mehr Schaden.','Step 8/10 · Build a Forge: Military tab, then Forge. It gives all troops more damage.','Paso 8/10 · Construye una herrería: pestaña Militar y luego herrería. Da más daño a todas las tropas.','Étape 8/10 · Construis une forge : onglet Militaire, puis forge. Elle donne plus de dégâts à toutes les troupes.'],
+ tut7:['Schritt 8/10 · Baue eine Schmiede (braucht Rathaus Stufe 2): Tab Militär, dann Schmiede. Sie gibt allen Truppen mehr Schaden.','Step 8/10 · Build a Forge (needs Town Hall level 2): Military tab, then Forge. It gives all troops more damage.','Paso 8/10 · Construye una herrería (requiere ayuntamiento nivel 2): pestaña Militar y luego herrería. Da más daño a todas las tropas.','Étape 8/10 · Construis une forge (demande hôtel de ville niveau 2) : onglet Militaire, puis forge. Elle donne plus de dégâts à toutes les troupes.'],
  tut8:['Schritt 9/10 · Tippe Gems in der Seitenleiste und öffne den Tab Upgrades. Dort verbesserst du dauerhaft Armee und Verteidigung.','Step 9/10 · Tap Gems in the side bar and open the Upgrades tab. Permanent boosts for army and defense.','Paso 9/10 · Toca Gemas en la barra lateral y abre la pestaña Mejoras. Aumentos permanentes para ejército y defensa.','Étape 9/10 · Touche Gemmes dans la barre latérale et ouvre l\'onglet Améliorations. Bonus permanents pour armée et défense.'],
  tut9:['Schritt 10/10 · Tippe dein Rathaus an und öffne Fortschritt. Dort siehst du Level, XP und später den Neuanfang.','Step 10/10 · Tap your Town Hall and open Progress. You see level, XP and later the fresh start.','Paso 10/10 · Toca tu Ayuntamiento y abre Progreso. Ves nivel, XP y más tarde el nuevo comienzo.','Étape 10/10 · Touche ton Hôtel de ville et ouvre Progrès. Tu y vois niveau, XP et plus tard le nouveau départ.']
 };
@@ -1046,7 +1051,7 @@ Object.keys(TNAME).forEach(function(k){
 /* Speicher-Schlüssel bleiben 'dorfsturm', damit alte Spielstände erhalten bleiben */
 var KEY='dorfsturm.v1', WN='dorfsturm:', storeOK=(function(){try{localStorage.setItem(KEY+'.p',1);localStorage.removeItem(KEY+'.p');return true}catch(e){return false}})(), away=0, origT=0;
 function fresh(){
-  return {pr:{n:0,pts:0,tot:0,up:{}},cnt:{win:0,tri:0,rep:0},rt:Date.now()+7200000,rlog:[],xp:0,tut:0,ach:{},gold:1800,wood:1800,stone:600,iron:200,gems:25,stars:0,nid:7,t:Date.now(),
+  return {pr:{n:0,pts:0,tot:0,up:{}},cnt:{win:0,tri:0,rep:0},rt:Date.now()+7200000,rlog:[],xp:0,tut:0,ach:{},gold:3000,wood:2400,stone:1500,iron:600,gems:25,stars:0,nid:7,t:Date.now(),
     army:{club:8,archer:0,brute:0,knight:0,thief:2},
     b:[{id:1,type:'townhall',x:9,y:9,lvl:1,store:0},
        {id:2,type:'mine',x:5,y:6,lvl:1,store:40},
@@ -1142,7 +1147,7 @@ function doPrestige(){
   var oldEra=eraIdx();
   var P=prD(), g=glory(), keep={xp:S.xp,ach:S.ach,gems:S.gems,stars:S.stars,pr:P,cnt:S.cnt,pt:S.pt||0,st:S.st,ds:S.ds,dl:S.dl,dq:S.dq};
   P.pts+=g; P.tot=(P.tot||0)+g; P.n++;
-  var N=fresh(); N.xp=keep.xp; N.ach=keep.ach; N.gems=keep.gems; N.stars=keep.stars; N.pr=P; N.tut=99; N.cnt=keep.cnt||N.cnt; N.pt=keep.pt; N.dq=keep.dq; N.st=keep.st||{}; N.ds=keep.ds||0; N.dl=keep.dl||'';
+  var N=fresh(); N.gold=1800; N.wood=1800; N.stone=600; N.iron=200; N.xp=keep.xp; N.ach=keep.ach; N.gems=keep.gems; N.stars=keep.stars; N.pr=P; N.tut=99; N.cnt=keep.cnt||N.cnt; N.pt=keep.pt; N.dq=keep.dq; N.st=keep.st||{}; N.ds=keep.ds||0; N.dl=keep.dl||'';
   var sb=1500*lg('start'); N.gold+=sb; N.wood+=sb; N.stone+=Math.round(sb*0.5); N.iron+=Math.round(sb*0.2);
   S=N; S.t=Date.now(); sel=null; ghost=null; mode='home'; save(); closeSheet(true); renderAll(); centerView();
   var E3=ERAS[eraIdx()]; toast(tr('Neues Zeitalter:')+' '+E3.ic+' '+tr(E3.n)+' · +'+g+' '+tr('Ruhm')); eraFx(eraIdx()!==oldEra);
@@ -1239,15 +1244,40 @@ function fromCode(c){
 
 function bkOld(){ return (S.xp>0||S.b.length>5)&&(!S.bk||Date.now()-S.bk>24*3600*1000); }
 function bkText(){ if(!S.bk) return 'Noch kein Backup. Sichere den Spielstand als Datei.'; var h=Math.floor((Date.now()-S.bk)/3600000); return 'Letztes Backup: '+(h<1?'vor weniger als 1 Std':h<48?'vor '+h+' Std':'vor '+Math.floor(h/24)+' Tagen'); }
+/* Feste Datei: Der Name bleibt immer gleich, die alte Datei wird ersetzt (Chrome/Edge/Android: direkt überschrieben, iPhone: Teilen → In Dateien sichern → Ersetzen) */
+var BKNAME='dorfsturm-backup.txt';
+function bkIdb(mode,val){
+  return new Promise(function(res,rej){
+    var o=indexedDB.open('dorfsturm-bk',1);
+    o.onupgradeneeded=function(){ o.result.createObjectStore('h'); };
+    o.onerror=function(){ rej(o.error); };
+    o.onsuccess=function(){ var st=o.result.transaction('h',mode==='get'?'readonly':'readwrite').objectStore('h'), q=mode==='get'?st.get('f'):st.put(val,'f'); q.onsuccess=function(){ res(q.result); }; q.onerror=function(){ rej(q.error); }; };
+  });
+}
+function bkDownload(txt){
+  var bl=new Blob([txt],{type:'text/plain'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(bl); a.download=BKNAME;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
+}
+function bkDone(msg){ toast(msg); if(sheetName==='ov') openOverview(); }
 function bkExport(){
-  S.bk=Date.now(); save();
+  S.bk=Date.now(); save(); var txt=toCode();
+  var fail=function(){ try{ bkDownload(txt); bkDone('Backup erstellt'); }catch(e){ toast('Backup fehlgeschlagen. Nutze den Code.'); } };
+  var cancel=function(e){ return e&&(e.name==='AbortError'); };
+  if(window.showSaveFilePicker&&window.indexedDB){
+    bkIdb('get').catch(function(){ return null; }).then(function(h){
+      var use=function(h2){ return h2.createWritable().then(function(w){ return w.write(txt).then(function(){ return w.close(); }); }).then(function(){ bkDone('Backup aktualisiert'); }); };
+      var pick=function(){ return window.showSaveFilePicker({suggestedName:BKNAME,types:[{description:'Text',accept:{'text/plain':['.txt']}}]}).then(function(h2){ bkIdb('put',h2).catch(function(){}); return use(h2); }); };
+      if(!h) return pick();
+      return Promise.resolve(h.queryPermission?h.queryPermission({mode:'readwrite'}):'granted').then(function(p){ return p==='granted'?p:(h.requestPermission?h.requestPermission({mode:'readwrite'}):'denied'); }).then(function(p){ return p==='granted'?use(h):pick(); }).catch(function(e){ if(cancel(e)) throw e; return pick(); });
+    }).catch(function(e){ if(!cancel(e)) fail(); });
+    return;
+  }
   try{
-    var bl=new Blob([toCode()],{type:'text/plain'}), a=document.createElement('a');
-    a.href=URL.createObjectURL(bl); a.download='dorfsturm-'+new Date().toISOString().slice(0,10)+'.txt';
-    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
-    toast('Backup erstellt');
-  }catch(e){ toast('Backup fehlgeschlagen. Nutze den Code.'); }
-  if(sheetName==='ov') openOverview();
+    var f=new File([txt],BKNAME,{type:'text/plain'});
+    if(navigator.canShare&&navigator.canShare({files:[f]})){ navigator.share({files:[f]}).then(function(){ bkDone('Backup erstellt'); }).catch(function(e){ if(!cancel(e)) fail(); }); return; }
+  }catch(e){}
+  fail();
 }
 document.addEventListener('change',function(e){
   if(!e.target||e.target.id!=='bkFile') return;
@@ -1336,6 +1366,34 @@ function openProg(){ tutAt(9);
 function th(){ return S.b.filter(function(b){return b.type==='townhall'})[0].lvl; }
 function tutDone(n){ if((S.tut|0)<=n) S.tut=n+1; }
 function tutAt(n){ if((S.tut|0)===n) S.tut=n+1; }
+/* Ziele, die in Schritt n auf der Karte leuchten (Blasen oder Gebäude) */
+function tutTargets(n){
+  var L=[], tgt=[];
+  if(n===0) S.b.forEach(function(b){ var P=PROD[b.type]; if(P&&b.store>=Math.max(1,Math.min(25,storeCap(b)*0.25))) L.push({bub:b}); });
+  else if(n===4) S.b.forEach(function(b){ if(b.type==='townhall'||b.type==='storage') L.push({b:b}); });
+  else if(n===6||n===7||n===9){
+    var th0=S.b.filter(function(b){ return b.type==='townhall'; })[0];
+    if(n===9){ if(th0) L.push({b:th0}); }
+    else if(n===7&&limitOf('smithy')>0) return L;
+    else{
+      var ok=S.b.filter(function(b){ return canUp(b)&&afford(upCost(b)); });
+      var pick=(th0&&ok.indexOf(th0)>=0)?th0:ok.sort(function(a,b){ var x=upCost(a),y=upCost(b); return (x.g+x.w+x.s+x.i)-(y.g+y.w+y.s+y.i); })[0];
+      if(pick) L.push({b:pick});
+    }
+  }
+  return L.filter(function(o){ return !(o.b&&o.b.id===sel); });
+}
+function drawTutGlow(now){
+  var n=S.tut|0; if(n>=10||mode!=='home'||ghost||$('#sheet').classList.contains('open')) return;
+  var pu=0.5+0.5*Math.sin(now*5);
+  tutTargets(n).forEach(function(o){
+    if(o.bub){ var b=o.bub, d=DEFS[b.type], x=(b.x+d.w)*T-T*0.35, y=b.y*T+T*0.1+Math.sin(now*3+b.id)*T*0.06;
+      circ(x,y,T*0.42*(1.35+0.3*pu),'rgba(243,187,74,'+(0.16+0.2*pu)+')','#f3bb4a',3); }
+    else { var bb=o.b, dd=DEFS[bb.type];
+      ctx.save(); ctx.shadowColor='#f3bb4a'; ctx.shadowBlur=T*(0.5+0.9*pu); ctx.lineWidth=3; ctx.strokeStyle='#f3bb4a'; ctx.fillStyle='rgba(243,187,74,'+(0.10+0.14*pu)+')';
+      ctx.fillRect(bb.x*T,bb.y*T,dd.w*T,dd.h*T); ctx.strokeRect(bb.x*T+1,bb.y*T+1,dd.w*T-2,dd.h*T-2); ctx.restore(); }
+  });
+}
 var tutLast='';
 function tutMark(){
   document.querySelectorAll('.tutpulse').forEach(function(e){ e.classList.remove('tutpulse'); });
@@ -1348,7 +1406,7 @@ function tutMark(){
   else if(n===4){ if(countOf('fence')>=3){ tutDone(4); n=5; } else q=tab!=='fen'?'#dock .tab[data-k=fen]':'#dock .card[data-t=fence]'; }
   if(n===5) q='#qb [data-act=raids]';
   else if(n===6) q='#dock [data-act=upgrade]';
-  else if(n===7) q=tab!=='mil'?'#dock .tab[data-k=mil]':'#dock .card[data-t=smithy]';
+  else if(n===7) q=!(limitOf('smithy')>0)?'#dock [data-act=upgrade]':(tab!=='mil'?'#dock .tab[data-k=mil]':'#dock .card[data-t=smithy]');
   else if(n===8) q='#side [data-act=shop]';
   else if(n===9) q='#dock [data-act=prog]';
   if(!q) return;
@@ -2323,9 +2381,10 @@ function render(now){
   sorted.forEach(function(b){ drawBuilding(b); if(!camp&&b.id===sel) selB=b; });
   if(selB&&!ghost){ var d=DEFS[selB.type]; ctx.lineWidth=2.5; ctx.strokeStyle='#f3bb4a'; ctx.setLineDash([6,4]); ctx.strokeRect(selB.x*T-1,selB.y*T-1,d.w*T+2,d.h*T+2); ctx.setLineDash([]); }
   if(GFX&&!camp&&!bt){ var N0=view.N; ctx.fillStyle='rgba(0,0,0,.05)'; for(var ci=0;ci<3;ci++){ var cx0=((now*0.35+ci*N0/3)%(N0+10))-5, cy0=N0*(0.2+0.3*ci); ctx.beginPath(); ctx.ellipse(cx0*T,cy0*T,T*3.4,T*1.6,0,0,6.2832); ctx.fill(); } }
-  { var amb=ambientCol(); if(amb){ ctx.save(); ctx.globalCompositeOperation='multiply'; ctx.fillStyle=amb; ctx.fillRect(0,0,view.N*T,view.N*T); ctx.restore(); } }
-  drawWeather(now,view.N*T,view.N*T);
+  { var amb=ambientCol(); if(amb){ ctx.save(); ctx.globalCompositeOperation='multiply'; ctx.fillStyle=amb; ctx.fillRect(view.ox*T-2,view.oy*T-2,view.W+4,view.H+4); ctx.restore(); } }
+  ctx.save(); ctx.translate(view.ox*T,view.oy*T); drawWeather(now,view.W,view.H); ctx.restore(); /* Tönung und Wetter auch außerhalb des Felds */
   if(!camp) S.b.forEach(function(b){ drawBubble(b,now); });
+  if(!camp&&!bt) drawTutGlow(now);
   if(ghost) drawGhost();
   if(bt){
     bt.units.slice().sort(function(a,b){return a.y-b.y}).forEach(drawUnit);
@@ -2483,7 +2542,7 @@ function renderDock(){
       html+='<button class="pick'+(bt.sel===k?' on':'')+'" data-act="pick" data-k="'+k+'"'+(n<=0?' disabled':'')+'><i><img alt="" src="'+troopIcon(k)+'"></i><b>'+n+'</b><span>'+t.n+'</span></button>';
     });
     html+='</div>'; }
-    if(bt.phase==='deploy'&&!bt.started&&trayLeft()>0) html+='<div class="row"><button class="btn go" data-act="rand"><span>🎲 Zufällig</span></button><button class="btn go" data-act="best"><span>★ Beste Platzierung</span></button></div>';
+    if(bt.phase==='deploy'&&!bt.started&&trayLeft()>0) html+='<div class="row">'+(prN()>=1?'<button class="btn go" data-act="best"><span>★ Beste Platzierung</span></button>':'<button class="btn go" data-act="rand"><span>🎲 Zufällig</span></button><button class="btn" disabled><span>🔒 ★ Beste Platzierung</span><small>'+tr('ab Prestige 1')+'</small></button>')+'</div>';
     if(bt.prog) html+='<div class="hint"><b>'+bt.prog+'</b></div>';
     if(!bt.started&&bt.phase==='scout') html+='<div class="row"><button class="btn go" data-act="engage"><span>⚔ Angreifen</span></button></div>';
     html+='<div class="row">';
@@ -2492,7 +2551,7 @@ function renderDock(){
     else{ html+='<button class="btn danger" data-act="surrender">Aufgeben</button>'; }
     html+='</div>';
     if(bt.sel){ var tt=TROOPS[bt.sel]; html+='<div class="hint h2">'+tt.n+': '+Math.round(tt.hp*bt.s)+' LP · '+Math.round(tt.dmg*bt.s*bt.dm)+' Schaden · '+tt.d+'</div>'; }
-    if(!bt.started) html+='<div class="hint h2">'+(bt.phase==='scout'?'Prüfe das Lager. Tippe Angreifen, dann setzt du Truppen ab.':'Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Zufällig / Beste Platzierung.')+'</div>';
+    if(!bt.started) html+='<div class="hint h2">'+(bt.phase==='scout'?'Prüfe das Lager. Tippe Angreifen, dann setzt du Truppen ab.':(prN()>=1?'Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Beste Platzierung.':'Tippe oder ziehe aufs Feld. Rote Zone ist gesperrt. Oder nutze Zufällig.'))+'</div>';
   }
   if(mode==='home'){ el.innerHTML=homeCards(); $('#inf').innerHTML='<button class="x" data-act="desel" aria-label="Schließen">×</button>'+html; $('#inf').hidden=false; }
   else { el.innerHTML=html; $('#inf').hidden=true; }
@@ -2502,7 +2561,7 @@ function renderDock(){
 }
 function spdSync(){
   var b=$('#spdB'); if(!b){ b=document.createElement('button'); b.id='spdB'; b.type='button'; b.style.cssText='position:absolute;left:8px;top:8px;z-index:3;background:#0b1213cc;color:inherit;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font:inherit;font-weight:700;font-size:12px;cursor:pointer'; b.onpointerdown=function(e){ e.stopPropagation(); }; b.onclick=function(e){ e.stopPropagation(); gameSpd=gameSpd>1?1:2; spdSync(); }; stage.appendChild(b); }
-  var on=mode==='battle'&&bt&&bt.started&&!bt.over; b.hidden=!on; b.style.display=on?'':'none';
+  var on=mode==='battle'&&bt&&bt.started&&!bt.over&&prN()>=2; if(!on&&gameSpd>1) gameSpd=1; b.hidden=!on; b.style.display=on?'':'none';
   if(!b._i){ b._i=1; b.textContent='⏩ 2x'; } b.style.background=gameSpd>1?'#1f6b45':'#0b1213cc';
 }
 function renderAll(){ applyEra(); resKey=''; renderRes(); renderHud(); renderDock(); spdSync(); }
@@ -2701,9 +2760,9 @@ document.addEventListener('click',function(e){
     case 'pick': if(bt&&bt.tray[k]>0){ bt.sel=k; renderDock(); } break;
     case 'engage': if(bt&&!bt.started){ bt.phase='deploy'; bt.prog=''; renderDock(); } break;
     case 'back': if(bt&&!bt.started){ bt.phase='scout'; bt.prog=''; renderDock(); } break;
-    case 'speed': gameSpd=gameSpd>1?1:2; renderDock(); break;
-    case 'rand': if(bt&&!bt.started&&bt.phase==='deploy') autoRandom(); break;
-    case 'best': if(bt&&!bt.started&&bt.phase==='deploy') autoBest(); break;
+    case 'speed': if(prN()<2) break; gameSpd=gameSpd>1?1:2; renderDock(); break;
+    case 'rand': if(bt&&!bt.started&&bt.phase==='deploy'&&prN()<1) autoRandom(); break;
+    case 'best': if(bt&&!bt.started&&bt.phase==='deploy'&&prN()>=1) autoBest(); break;
     case 'next':
       if(!bt||bt.started) break;
       var cost=searchCost(); if(S.gold<cost){ toast(tx('searchMissing',{res:RN.gold})); break; }
@@ -2902,11 +2961,16 @@ function dqAdd(k,n){
   D.q.forEach(function(q){ if(q.k===k&&!q.done){ q.p=Math.min(q.n,(q.p||0)+n); if(q.p>=q.n){ q.done=1; fin=1; } } });
   if(fin){ toast(tr('Aufgabe erledigt')+' ✓'); sfx('up'); }
 }
-function dqReward(){ var t=Math.max(1,th()); return {gold:Math.round(150*t),wood:Math.round(100*t),gems:1}; }
+function dqBonus(){ return Math.min(8,3+prN()); }
+/* Belohnung wächst mit Rathaus, Lagergröße (2 % davon) und Prestige (+35 % je Stufe) */
+function dqReward(){
+  var t=Math.max(1,th()), pn=prN(), m=1+0.35*pn, r10=function(v){ return Math.round(v/10)*10; };
+  return {gold:r10(Math.max(150*t,0.02*resCap('gold'))*m),wood:r10(Math.max(100*t,0.02*resCap('wood'))*m),gems:Math.min(6,1+Math.floor(t/4)+pn)};
+}
 function dqClaim(i){
   var D=dqEnsure(), q=D.q[i]; if(!q||!q.done||q.cl) return; q.cl=1; var rw=dqReward();
   ['gold','wood'].forEach(function(r){ S[r]=Math.min(Math.max(S[r],resCap(r)),S[r]+rw[r]); }); S.gems+=rw.gems; sfx('collect');
-  if(D.q.every(function(x){ return x.cl; })&&!D.b){ D.b=1; S.gems+=3; toast(tr('Alle Aufgaben erledigt')+' · +3 '+tr('Gems')); sfx('daily'); }
+  if(D.q.every(function(x){ return x.cl; })&&!D.b){ D.b=1; S.gems+=dqBonus(); toast(tr('Alle Aufgaben erledigt')+' · +'+dqBonus()+' '+tr('Gems')); sfx('daily'); }
   save(); openOverview();
 }
 function dqHtml(){
@@ -2915,7 +2979,7 @@ function dqHtml(){
     var pc=Math.round(100*q.p/q.n);
     h+='<div class="item" style="margin-bottom:6px;display:block"><div class="nm" style="font-size:14px;hyphens:none;-webkit-hyphens:none;overflow-wrap:normal">'+tx('dq_'+q.k,{n:q.n})+'</div><div style="height:6px;border-radius:3px;background:#0b1213;margin:6px 0"><div style="height:100%;width:'+pc+'%;border-radius:3px;background:'+(q.done?'#59d18a':'#f3bb4a')+'"></div></div><div class="act" style="justify-content:space-between;gap:8px"><span class="muted" style="font-size:12px">'+q.p+' / '+q.n+' · '+fc(rw.gold)+' '+RN.gold+' · '+fc(rw.wood)+' '+RN.wood+' · '+rw.gems+' '+RN.gems+'</span>'+(q.cl?'<span class="muted">✓</span>':'<button class="mini" data-act="dqClaim" data-k="'+i+'"'+(q.done?'':' disabled')+'>'+tr('Abholen')+'</button>')+'</div></div>';
   });
-  return h+'<div class="muted" style="font-size:12px">'+tr('Alle drei erledigt: +3 Gems Bonus')+(D.b?' ✓':'')+'</div>';
+  return h+'<div class="muted" style="font-size:12px">'+tx('dqall',{n:dqBonus()})+(D.b?' ✓':'')+'</div>';
 }
 /* Statistik */
 function stat(k){ return (S.st&&S.st[k])||0; }
