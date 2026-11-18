@@ -104,6 +104,8 @@ Building limit by Town Hall level:
 | Knight | Charge: the first hit deals double damage |
 | Looter | Dodge: every 3rd hit from a defense misses |
 
+Abilities show in battle: a red aura and "Rage!" for the Clubman, a golden arrow and "Volley!" for the Archer, a shockwave, screen shake and "Stomp!" for the Brute, a blue ring and "Charge!" for the Knight, "Miss!" for the Looter.
+
 - **Barracks:** the highest level counts. Troop strength (health and damage) is ×(1 + 0.2 per level above 1).
 - **Smithy:** the highest level counts. +12 % damage per level for all troops.
 - The Army menu and the Overview show the current strength values.
@@ -113,6 +115,7 @@ Building limit by Town Hall level:
 1. Tap **⚔ Attack** in the bottom dock (you need at least one troop). The first camp is free. If you leave a camp without fighting, **⚔ Attack** reopens the same camp for free. Only **Search next** costs gold. The camp view shows the buildings, cannons, towers, the defense damage per second, the possible loot and gems. Red circles show the range of the defenses. Buttons: "Back", "Search next" (costs gold: 20 per Town Hall level plus 2 % of your storage space, so hoarding makes searching more expensive), "⚔ Attack". Tapping the field does not deploy anything yet.
    Camp strength follows your progress within the current Town Hall level: the bigger your army and the further your buildings are upgraded, the harder the camps get (and the more loot they hold). With the same Town Hall, a small army meets weaker camps, usually one level lower, with up to 30 % less health.
    Camps are built tougher than your own village: more Cannons (3 to 11) and Arrow Towers (3 to 13) from Town Hall 4 on, Ballistas from Town Hall 3, Wizard Towers from Town Hall 5, +30 % health and +25 % defense damage. The Town Hall and most defenses sit behind **walls** (see *Enemy camp walls*).
+   **Easier camps below Barracks level 5:** until you can train the strongest troop (Knight, Barracks level 5), camps get fewer defenses (about 32 % fewer at Barracks 1, 8 % fewer at Barracks 4), up to 45 % less health and defense damage (Barracks 1 -35 %, 2 -25 %, 3 -15 %, 4 -5 %), and one camp level lower below Barracks 4.
    **Easier camps at Town Hall 1 to 3 (every era):** Cannons 1 / 2 / 2, Arrow Towers 1 / 2 / 3, building health and defense damage ×0.4 / ×0.55 / ×0.7, at most 2 Mines and 2 Sawmills.
 2. Press **⚔ Attack**. The troop bar appears. Deploy each troop individually by tapping or dragging anywhere on the field outside the blocked red zone around the camp's buildings. "Back" returns to the camp view.
 3. **Auto placement** (two buttons):
@@ -187,12 +190,14 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 
 ### 11. Daily bonus, statistics and settings
 - **Daily bonus:** the first time you open the game each day (after the tutorial) a window offers a reward. Claiming on consecutive days builds a **7-day streak**; missing a day starts again at day 1. The reward is calculated when the window opens: 120 × Town Hall level × (1 + 0.25 × (streak day − 1)) Gold and Wood, half of that in Stone, Iron from day 3 on (20 %), and Gems on day 3 (2), day 5 (1) and day 7 (5). A higher Town Hall level on the next day means a bigger bonus. Streak and last claim are part of the save and survive a fresh start.
+- **Daily tasks (Overview):** every day brings 3 new tasks, the same for the whole day, picked from: collect resources, win attacks, earn stars, train troops, build or upgrade buildings, destroy buildings in attacks. Progress counts automatically and a toast announces a finished task. Each finished task is claimed with its own button (150 × Town Hall level of the first resource, 100 × Town Hall level of the second, 1 gem). Claiming all three gives **+3 gems** on top. Tasks and progress are saved and survive a fresh start.
 - **Play time:** the Overview shows your total play time. It only counts while the page is visible (not in the background, not while offline) and survives fresh starts. Saves from before this feature start at zero.
 - **Statistics (Overview):** attacks, wins, three-star wins, defeats, raids repelled, buildings destroyed, troops lost, total loot per resource, fresh starts, buildings in the village and the bonus streak. Attack numbers are saved with the game and survive a fresh start.
 - **Settings (Overview):**
   - **Sound** on/off. Short effects for collecting, building, upgrading, deploying troops, destroyed buildings, victory, defeat, the daily bonus and a new era. The sounds are synthesized in the browser, there are no audio files. Browsers only allow sound after your first tap.
   - **Day and night** on/off. The tint follows the clock of your device (dawn, day, dusk, night, softer in the Future era) and applies to the village and to enemy camps. Troops, health bars and projectiles stay untinted so fights stay readable.
-  Both choices are saved on the device.
+  - **Weather** on/off (graphics must be on). Each era has its own weather that comes and goes: dust wind in the Stone Age, fog in the Middle Ages, smog and soot in the Industrial Age, rain in the Modern Age and data rain in the Future. Purely visual.
+  All three choices are saved on the device.
 
 ## Eras
 The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige). A fresh start plays a short full-screen transition with the era's symbol and name.
@@ -219,7 +224,7 @@ Troops get new names and their own pixel models per era too, e.g. Clubman → So
 | Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), building animations in the table `ANI`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), daily tasks in `DQT`, `dqAdd` and `dqClaim`, building animations in the table `ANI`, weather in `drawWeather`, ability effects in `fxText`, `fxRing` and `shakeT`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
