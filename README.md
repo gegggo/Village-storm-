@@ -14,12 +14,16 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
 - **Bottom dock:** the tabs *Economy*, *Military*, *Other* (Resource Totem, Fences) with the building cards, and the **⚔ Attack** tab.
-- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras. During a battle the **⏩ 2x** button sits top left of the field (unlocked from Prestige 2).
+- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras (earlier eras can be previewed, see *Eras*). During a battle the **⏩ 2x** button sits top left of the field (unlocked from Prestige 2).
 
 ## Getting started
 - Online: GitHub Pages (Settings → Pages → Branch `main`).
 - Locally: open `index.html` in your browser.
 - Your save lives locally in the browser (localStorage). Another device or browser has its own save. Transfer it with the export code or the backup file (Overview).
+
+### Small and older Android devices
+- The layout adapts to narrow screens (down to about 360 px) and short browser windows: compact player bar, smaller tutorial hint, and the building info panel stays inside the map instead of covering the resource bar.
+- Fallbacks exist for older WebViews (no `inset`, `aspect-ratio`, `color-mix` or `ResizeObserver` needed). Very old systems (Android 5/6, WebView older than Chrome 84) may still show layout glitches. Turn the ✨ graphics off if the game is slow.
 
 ## Tutorial
 
@@ -225,6 +229,8 @@ A hint line above the dock names the current step (it stays pinned at the top of
 
 ## Eras
 The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige). A fresh start plays a short full-screen transition with the era's symbol and name.
+
+**Revisiting earlier eras:** in the era list, every era you have already passed (all eras before your current one) has a **View** button with an eye icon. The preview shows your current village in that era's look: map colors, building and troop models, resource and building names. It is view-only: building, upgrading, attacking and the side bar are locked, and nothing is changed or saved. A banner at the bottom of the map ("Preview: … · Back") ends the preview and reopens the era list. A fresh start also ends it. Eras you have not reached yet stay locked ("Unlock: Prestige N"). The more fresh starts you have, the more past eras you can look at.
 
 Buildings come alive per era (graphics on, see the ✨ button): smoke from chimneys in the Industrial Age, fire at the Cave Camp, forges and army camps in the Stone and Middle Ages, blinking lights in the Modern Age and pulsing glows in the Future.
 
