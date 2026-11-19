@@ -14,7 +14,7 @@ To add another language: add a column to the lines in `I18N` (order `de|en|es|fr
 - The bag button in the side bar (**Collect**) collects everything at once.
 - **Side bar:** Collect, Gems (shop), Army, Overview.
 - **Bottom dock:** the tabs *Economy*, *Military*, *Other* (Resource Totem, Fences) with the building cards, and the **⚔ Attack** tab.
-- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras (earlier eras can be previewed, see *Eras*). During a battle the **⏩ 2x** button sits top left of the field (unlocked from Prestige 2).
+- **Top left:** player level, Town Hall level, stars, XP bar and the number of achievements ready to claim (🏆). The badge in the top right of the map shows the current era; tap it for the list of all eras (earlier eras can be previewed, see *Eras*; not available during a battle). During a battle the **⏩ 2x** button sits top left of the field (unlocked from Prestige 2).
 
 ## Getting started
 - Online: GitHub Pages (Settings → Pages → Branch `main`).
@@ -90,7 +90,7 @@ Building limit by Town Hall level:
 
 ### 5. Army
 - Required: **Barracks** (troops, strength) and **Army Camp** (slots, 12 + 6 per level for each camp).
-- In the Army menu (side bar), train or dismiss troops with **+** and **−**. The **Max** button trains as many as your resources and free slots allow. Dismissing a troop gives back its full cost (as far as storage allows).
+- In the Army menu (side bar), train or dismiss troops with **+** and **−**. Tap once for one troop, or **hold** the button to repeat: it starts after about 0.4 s and speeds up after about 1 s. Release to stop. The **Max** button trains as many as your resources and free slots allow. Dismissing a troop gives back its full cost (as far as storage allows).
 - Build and upgrade several Army Camps to hold a bigger army.
 
 | Troop | Slots | Cost | Trait |
@@ -185,18 +185,20 @@ Enemy camps use the same four defenses (plus walls, see *Enemy camp walls*).
 ### 10. Prestige (fresh start)
 - Unlocks at Town Hall level 10: **Town Hall → Progress → Prestige → Fresh start** (double confirmation).
 - Village, resources and army reset (you start again with the small starter village). You keep gems, stars, level (XP), achievements and your Prestige bonuses.
-- You earn **Glory**: 20 + 1 per 2 stars + 2 per player level + 1 per achievement + 5 per earlier fresh start. Spend it on permanent bonuses. The price is the base price × (current level + 1).
+- You earn **Glory**: (20 + 1 per 2 stars + 2 per player level + 1 per achievement + 5 per earlier fresh start) × (1 + 0.05 per *Glory-rich* level). Spend it on permanent bonuses. The price is the base price × (current level + 1). The high maximum levels and the two late bonuses (*Glory-rich*, *Gem blessing*) keep Glory useful after the first bonuses are maxed and make every further fresh start worthwhile, also once the last era is reached.
 
 | Bonus | Per level | Max level | Base price (Glory) |
 |---|---|---|---|
-| Production | +8 % | 10 | 2 |
-| Build cost | −3 % | 10 | 2 |
-| Storage | +10 % | 10 | 2 |
-| Loot | +8 % | 10 | 2 |
-| Troop strength | +4 % | 10 | 3 |
-| Defense | +8 % | 10 | 2 |
-| XP | +10 % | 5 | 3 |
-| Starting resources | +1,500 Gold and Wood (+750 Stone, +300 Iron) | 5 | 4 |
+| Production | +8 % | 30 | 2 |
+| Build cost | −3 % | 20 | 2 |
+| Storage | +10 % | 30 | 2 |
+| Loot | +8 % | 30 | 2 |
+| Troop strength | +4 % | 30 | 3 |
+| Defense | +8 % | 30 | 2 |
+| XP | +10 % | 15 | 3 |
+| Starting resources | +1,500 Gold and Wood (+750 Stone, +300 Iron) | 10 | 4 |
+| Glory-rich (*Ruhmreich*) | +5 % Glory per fresh start | 20 | 5 |
+| Gem blessing (*Gem-Segen*) | +10 Gems on every fresh start | 20 | 5 |
 
 - Each fresh start raises the **world level**: raids +20 %, enemy camps +15 % health, loot +30 % (each on top of a further +10 % for raids and camps).
 
@@ -230,7 +232,7 @@ A hint line above the dock names the current step (it stays pinned at the top of
 ## Eras
 The game starts in the Stone Age. Every Prestige fresh start (Town Hall level 10) begins the next era: Stone Age → Middle Ages → Industrial Age → Modern Age → Future (stays on Future after that). Each era has its own map colors, its own resource names and its own names for the four production buildings. Internally the resources stay gold, wood, stone and iron, so costs and balance do not change. A badge on the map shows the era; tap it to see all eras (name, resources, unlock by Prestige). A fresh start plays a short full-screen transition with the era's symbol and name.
 
-**Revisiting earlier eras:** in the era list, every era you have already passed (all eras before your current one) has a **View** button with an eye icon. The preview shows your current village in that era's look: map colors, building and troop models, resource and building names. It is view-only: building, upgrading, attacking and the side bar are locked, and nothing is changed or saved. A banner at the bottom of the map ("Preview: … · Back") ends the preview and reopens the era list. A fresh start also ends it. Eras you have not reached yet stay locked ("Unlock: Prestige N"). The more fresh starts you have, the more past eras you can look at.
+**Revisiting earlier eras:** in the era list, every era you have already passed (all eras before your current one) has a **View** button with an eye icon. The preview shows the village **as it was at the end of that era** (buildings and layout, resources, storage caps, level bar and stars), in that era's look: map colors, building and troop models, resource and building names. The snapshot is saved automatically at every fresh start and is part of the save and the export code. Eras passed before this feature existed have no snapshot and show your current village instead. Gems always show the current amount. The preview is view-only: building, upgrading, attacking and the side bar are locked, and nothing is changed or saved; your real village stays untouched. The era list cannot be opened during a battle, so no era can be viewed there. A banner at the bottom of the map ("Preview: … · Back") ends the preview and reopens the era list. A fresh start also ends it. Eras you have not reached yet stay locked ("Unlock: Prestige N"). The more fresh starts you have, the more past eras you can look at.
 
 Buildings come alive per era (graphics on, see the ✨ button): smoke from chimneys in the Industrial Age, fire at the Cave Camp, forges and army camps in the Stone and Middle Ages, blinking lights in the Modern Age and pulsing glows in the Future.
 
@@ -254,7 +256,7 @@ Troops get new names and their own pixel models per era too, e.g. Clubman → So
 | Future | Cyborg | Laser shooter | Mech | Plasma warrior | Drone (hovers) |
 
 ## Balance
-Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, fence protection in `wallCover` (used by `villageDef` and `runRaid`), the tutorial steps in `TXT` (`tut0` to `tut9`), `tutMark` and `tutAt`, Prestige bonuses in `LEG`. Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), daily tasks in `DQT`, `dqAdd` and `dqClaim`, building animations in the table `ANI`, weather in `drawWeather`, ability effects in `fxText`, `fxRing` and `shakeT`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
+Tuning constants live in `BAL` (production and loot multipliers) and in `upCost`, `newCost`, `LIMITS` and the Town Hall cost tables (`TH_G`, `TH_W`, `TH_S`, `TH_I`). Troop stats are in `TROOPS`, troop models in `mkTroop`, camp generation (defense counts, wall rings, strength factors) in `genCamp`, wall behavior in `blockWall` and `step`, defenses in `defStats`, raid strength in `raidPow`, fence protection in `wallCover` (used by `villageDef` and `runRaid`), the tutorial steps in `TXT` (`tut0` to `tut9`), `tutMark` and `tutAt`, Prestige bonuses in `Gr` (Glory gain in `Nr`), era snapshots in `ti` (saved) and `pvIn` / `pvOut` (preview). Daily bonus values are in `dailyReward`, troop abilities in `step` and `hurt` (descriptions in `TSPEC`), daily tasks in `DQT`, `dqAdd` and `dqClaim`, building animations in the table `ANI`, weather in `drawWeather`, ability effects in `fxText`, `fxRing` and `shakeT`, the day/night colors in `ambientCol`, sounds in `sfx`. Production is slower and upgrades cost more than in earlier versions, so a first run takes noticeably longer.
 
 ## Beginner order
 1. Collect the bubbles of your Gold Mine and Sawmill.
